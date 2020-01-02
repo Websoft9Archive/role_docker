@@ -1,8 +1,8 @@
   # Centos 
 - block:
   - name: Install required packages
-    yum:
-      name: [yum-utils,device-mapper-persistent-data,lvm2]
+    dnf:
+      name: [device-mapper-persistent-data,lvm2]
 
   - name: Add repository
     template:
@@ -10,7 +10,7 @@
       dest: /etc/yum.repos.d/docker.repo
         
   - name: Install Docker
-    yum:
+    dnf:
       name: [docker-ce,docker-ce-cli,containerd.io]
     
   when: ansible_distribution == 'CentOS'
