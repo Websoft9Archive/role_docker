@@ -1,7 +1,7 @@
   # Centos 
 - block:
   - name: Install required packages
-    dnf:
+    yum:
       name: [device-mapper-persistent-data,lvm2]
 
   - name: Add repository
@@ -10,7 +10,7 @@
       dest: /etc/yum.repos.d/docker.repo
         
   - name: Install Docker
-    dnf:
+    yum:
       name: [docker-ce,docker-ce-cli,containerd.io]
     
   when: ansible_distribution == 'CentOS'
@@ -40,7 +40,12 @@
 
 - name: pip requirements
   pip:
-    name: [docker,docker-compose]
+    name: docker
+
+- name: pip requirements II
+  pip:
+    name: docker-compose
+  when: ansible_python.version.major == 3
 
 - name: Started Docker
   service:
