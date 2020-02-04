@@ -13,7 +13,7 @@
     yum:
       name: [docker-ce,docker-ce-cli,containerd.io]
     
-  when: ansible_distribution == 'CentOS'
+  when: ansible_os_family == 'RedHat'
 
   # # Ubuntu
 - block:
@@ -36,7 +36,7 @@
     apt:
       name: [docker-ce,docker-ce-cli,containerd.io]
         
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_os_family == 'Debian'
 
 - name: pip requirements
   pip:
