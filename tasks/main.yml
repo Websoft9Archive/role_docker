@@ -8,7 +8,14 @@
     template:
       src: docker.repo.jinja2
       dest: /etc/yum.repos.d/docker.repo
+    when: ansible_distribution != 'Amazon'
         
+  - name: Add repository
+    template:
+      src: docker-aws.repo.jinja2
+      dest: /etc/yum.repos.d/docker.repo
+    when: ansible_distribution == 'Amazon'
+
   - name: Install Docker
     yum:
       name: [docker-ce,docker-ce-cli,containerd.io]
