@@ -52,7 +52,7 @@
 - name: pip requirements II
   pip:
     name: docker-compose
-  when: ansible_python.version.major == 3
+    executable: pip3
 
 - name: Started Docker
   service:
