@@ -26,7 +26,7 @@
 - block:
   - name: Install required packages
     apt:
-      name: [apt-transport-https,ca-certificates,curl,gnupg-agent,software-properties-common]
+      name: [apt-transport-https,ca-certificates,curl,gnupg-agent,software-properties-common,libffi-dev,libssl-dev]
     
 
   - name:  Add Docker’s official GPG key
@@ -53,6 +53,7 @@
   pip:
     name: docker-compose
     executable: pip3
+  when: ansible_os_family == 'Debian'
 
 - name: Started Docker
   service:
