@@ -1,2 +1,5 @@
+#global var
+region: "0"
+
+#image name which you want to pull
 docker_images:
-docker_image: false

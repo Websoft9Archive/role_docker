@@ -59,11 +59,11 @@
   when: ansible_os_family == 'Debian'
 
 
-- name: config docker mirrir
+- name: config second image hub for Chinese
   file:
     src: daemon.json
     dest: /etc/docker/daemon.json
-  when: docker_image
+  when: region == '1' or region == 1
 
 - name: Started Docker
   service:
@@ -71,7 +71,6 @@
     enabled: yes
     state: restarted
   
-
 - name: Pull Images
   docker_image:
     name: "{{ item }}"
