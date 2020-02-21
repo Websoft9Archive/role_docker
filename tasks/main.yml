@@ -58,12 +58,19 @@
     extra_args:  --ignore-installed
   when: ansible_os_family == 'Debian'
 
+
+- name: config docker mirrir
+  file:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+  when: docker_mirrir
+
 - name: Started Docker
   service:
     name: docker 
     enabled: yes
     state: restarted
-
+  
 
 - name: Pull Images
   docker_image:
