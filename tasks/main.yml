@@ -59,7 +59,7 @@
   when: ansible_os_family == 'Debian'
 
 
-- name: config docker mirrir
+- name: config docker image
   file:
     src: daemon.json
     dest: /etc/docker/daemon.json
