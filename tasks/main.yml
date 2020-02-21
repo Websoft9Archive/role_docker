@@ -63,7 +63,7 @@
   file:
     src: daemon.json
     dest: /etc/docker/daemon.json
-  when: docker_mirrir
+  when: docker_image
 
 - name: Started Docker
   service:

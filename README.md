@@ -22,7 +22,7 @@ Role Variables
 
 ```
 docker_images: []
-docker_mirrir: false # true 使用国内加速
+docker_image: false # true 使用国内加速
 ```
 
 
