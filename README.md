@@ -1,7 +1,7 @@
 Ansible Role: Docker
 =========
 
-在CentOS或者Ubuntu服务器上安装和配置Docker
+在CentOS或者Ubuntu服务器上安装和配置Docker，并拉取指定镜像
 
 Requirements
 ------------
@@ -22,7 +22,6 @@ Role Variables
 
 ```
 docker_images: []
-docker_image: false # true 使用国内加速
 ```
 
 
