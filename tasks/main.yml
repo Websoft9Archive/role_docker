@@ -59,11 +59,7 @@
   when: ansible_os_family == 'Debian'
 
 
-<<<<<<< HEAD
 - name: config second image hub for Chinese
-=======
-- name: config docker image
->>>>>>> a628b1323c5e7830892b458b6232d839afab5dbf
   file:
     src: daemon.json
     dest: /etc/docker/daemon.json
