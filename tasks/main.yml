@@ -58,6 +58,11 @@
     extra_args:  --ignore-installed
   when: ansible_os_family == 'Debian'
 
+- name: Started Docker
+  service:
+    name: docker 
+    enabled: yes
+    state: restarted
 
 - name: config second image hub for Chinese
   copy:
@@ -65,7 +70,7 @@
     dest: /etc/docker/daemon.json
   when: region == '1' or region == 1
 
-- name: Started Docker
+- name: Restarted Docker
   service:
     name: docker 
     enabled: yes
