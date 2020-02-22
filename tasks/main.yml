@@ -60,7 +60,7 @@
 
 
 - name: config second image hub for Chinese
-  file:
+  copy:
     src: daemon.json
     dest: /etc/docker/daemon.json
   when: region == '1' or region == 1
@@ -73,17 +73,12 @@
   
 - name: Pull Images
   docker_image:
-    name: "{{ item }}"
+    name: "{{item}}"
     source: pull
   with_items: "{{docker_images}}"
   when: docker_images != none
 
-      
 - name: Check Docker Version
   shell: docker -v
   register: docker_ver
   notify: Docker Version
-
-
-
-    
