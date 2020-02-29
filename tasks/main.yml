@@ -50,6 +50,10 @@
     name: docker
     extra_args:  --ignore-installed
 
+- name: pip update requests
+  pip:
+    name: requests
+    extra_args: " -U --ignore-installed"
 
 - name: pip requirements II
   pip:
