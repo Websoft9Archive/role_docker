@@ -71,15 +71,15 @@
     name: docker 
     enabled: yes
     state: restarted
-  
-- name: Pull Images
-  docker_image:
-    name: "{{item}}"
-    source: pull
-  with_items: "{{docker_images}}"
-  when: docker_images != none
 
 - name: Check Docker Version
   shell: docker -v
   register: docker_ver
   notify: Docker Version
+
+# Docker application installation
+
+- name: Install Docker applications
+  include_vars: vars/apps_{{item}}.yml
+  with_items: "{{docker_applications}}"
+  when: docker_applications != none
