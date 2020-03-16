@@ -10,4 +10,4 @@ region: "0"
 #  - portainer
 
 
-docker_applications: ''
+docker_applications: []
