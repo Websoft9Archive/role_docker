@@ -82,4 +82,4 @@
 - name: Install Docker applications
   include_tasks: apps_{{item}}.yml
   with_items: "{{docker_applications}}"
-  when: docker_applications != '' or not docker_applications
+  when: docker_applications != '' or docker_applications != none
