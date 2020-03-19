@@ -1,8 +1,8 @@
 ---
-- name: Install docker-py module
-  pip:
-    name: docker-py
-    state: present
+- name: Clean 
+  docker_container:
+    name: portainer
+    state: absent
 
 - name: Create /data directory
   file:

@@ -16,6 +16,12 @@
     line: "      - '9002:80'"
 
 - name: run docker-compose
+  shell: docker-compose down -v 
+  args:
+    chdir: /data/wwwroot/onlyoffice
+
+
+- name: run docker-compose
   shell: docker-compose up -d 
   args:
     chdir: /data/wwwroot/onlyoffice

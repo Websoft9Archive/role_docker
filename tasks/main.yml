@@ -79,13 +79,6 @@
 
 # Docker application installation
 
-- name: Clean 
-  docker_container:
-    name: "{{item}}"
-    state: absent
-  with_items: "{{docker_applications}}"
-  when: docker_applications is not none and docker_applications != ""
-
 - name: Install Docker applications
   include_tasks: apps_{{item}}.yml
   with_items: "{{docker_applications}}"
