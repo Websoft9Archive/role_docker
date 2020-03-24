@@ -1,7 +1,7 @@
 Ansible Role: Docker
 =========
 
-本 Role 用于在PHP运行环境下安装 [Docker](https://www.docker.com/)。
+本 Role 用于在PHP运行环境下安装 [Docker](https://www.docker.com/)，以及安装常用的基于Docker的应用。
 
 ## Requirements
 
@@ -14,7 +14,9 @@ Ansible Role: Docker
 | Python 组件 |  requests, docker-compose  |
 | Runtime |  |
 
-注意： requests 需要更新为最新版本，否则 Docker API 无法使用(ansible docker 是通过 Docker API 管理 Docker)。
+注意： 
+1. requests 需要更新为最新版本，否则 Docker API 无法使用(ansible docker 是通过 Docker API 管理 Docker)。
+2. Ansible的Docker模块需要安装docker-compose方可使用，而docker-compose针对于Python2 or Python3 兼容性是难以控制，尽量少用Ansible的Docker模块
 
 
 ## Related roles
@@ -34,10 +36,10 @@ Ansible Role: Docker
 
 | **Items**      | **Details** | **Format**  | **是否初始化** |
 | ------------------| ------------------|-----|-----|
-| docker_images | 容器镜像名称 | 字符串 | 否 |
+| docker_applications | - adminmongo - onlyofficedocumentserver... | 队列 | 否 |
 
 注意： 
-1. docker_images：该变量只在安装的同时需要拉取容器镜像时赋值。
+1. docker_applications：用于额外安装基于Docker的应用，例如：phpMyAdmin,phpPgAadmin,Potainer等
 
 ## Example
 
