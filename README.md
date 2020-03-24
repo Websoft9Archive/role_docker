@@ -55,5 +55,6 @@ Ansible Role: Docker
    - {role: role_common, tags: "role_common"}   
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_docker, tags: "role_docker"}
+```
 
 ## FAQ
