@@ -16,7 +16,7 @@
   docker_container:
     name: phpmyadmin
     state: absent
-
+    force_kill: yes
 
 - name: Create a phpMyAdmin container
   docker_container: 
