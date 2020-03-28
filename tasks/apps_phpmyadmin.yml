@@ -13,10 +13,9 @@
   register: gateway
 
 - name: Clean 
-  docker_container:
-    name: phpmyadmin
-    state: absent
-    force_kill: yes
+  shell: |
+    docker container stop phpmyadmin
+    docker container rm phpmyadmin
 
 - name: Create a phpMyAdmin container
   docker_container: 
