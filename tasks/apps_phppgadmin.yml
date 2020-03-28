@@ -5,5 +5,10 @@
   shell: ip route show | grep docker0 | awk '{print $9}'
   register: gateway
 
+- name:
+  shell: |
+    docker stop  `docker ps -aq --filter name=phppgadmin`
+    docker rm    `docker ps -aq --filter name=phppgadmin`
+
 - name: Create a PostgrepSQL container
   shell: docker run --name phppgadmin -d -e PHP_PG_ADMIN_SERVER_HOST={{gateway.stdout}} -p 9090:80 --restart=always dockage/phppgadmin
