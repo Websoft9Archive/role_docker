@@ -9,6 +9,7 @@
 
 ### Bug Fixes
 
+* 2020-03-29  弃用所有ansible docker模块，直接使用Docker命令
 * 2020-02-14  修复Docker应用重试安装报错的问题
 
 ### Features
