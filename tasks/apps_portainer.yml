@@ -1,33 +1,27 @@
 ---
-- name: Clean 
-  docker_container:
-    name: portainer
-    state: absent
-
-- name: Create /data directory
+- name: Create /data/portainer directory
   file:
-    path: /data
+    path: /data/portainer
     state: directory
     owner: root
     group: root
     mode: 0755
-
+  
 - name: pull portainer image
-  docker_image:
-    name: portainer/portainer
+  shell: docker pull portainer/portainer
 
 - name: Create a volume
   docker_volume:
     name: portainer_data
 
-- name: start portainer
-  docker_container:
-    name: portainer
-    image: portainer/portainer
-    state: started
-    restart_policy: always
-    ports:
-      - "9000:9000"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+- name: Delete the running portainer if exist for re-install
+  shell: if [ $(docker ps -aq --filter name=portainer) ];then docker stop portainer;docker rm portainer;fi
+
+- name: Run Portainer container
+  shell: sudo docker run --name portainer  \
+         --restart=always \
+         -i -t -d \
+         -p 9090:9000 \
+         -v /var/run/docker.sock:/var/run/docker.sock \
+         -v /data/portainer:/data \
+         portainer/portainer

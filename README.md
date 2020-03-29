@@ -58,3 +58,6 @@ Ansible Role: Docker
 ```
 
 ## FAQ
+
+#### 为什么本项目没有使用ansible的docker模块？
+Ansible Docker模块采用API与Docker通信，容易出错，因此启用此模块，直接使用Docker命令更稳定可靠，且熟悉Docker命令即可，无需掌握 Ansible 此模块的使用

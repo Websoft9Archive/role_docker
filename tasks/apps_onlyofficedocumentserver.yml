@@ -9,7 +9,7 @@
     src: "apps_onlyofficedocumentserver-compose.yml"
     dest: /data/wwwroot/onlyoffice_DocumentServer/docker-compose.yml
 
-- name: run docker-compose
+- name: docker-compose up
   shell: docker-compose up -d 
   args:
     chdir: /data/wwwroot/onlyoffice_DocumentServer

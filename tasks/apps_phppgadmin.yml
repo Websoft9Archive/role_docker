@@ -6,9 +6,7 @@
   register: gateway
 
 - name: Delete the running phppgadmin
-  shell: |
-    docker stop  `docker ps -aq --filter name=phppgadmin`
-    docker rm    `docker ps -aq --filter name=phppgadmin`
+  shell: if [ $(docker ps -aq --filter name=phppgadmin) ];then docker stop phppgadmin;docker rm phppgadmin;fi
 
-- name: Create a PostgrepSQL container
-  shell: docker run --name phppgadmin -d -e PHP_PG_ADMIN_SERVER_HOST={{gateway.stdout}} -p 9090:80 --restart=always dockage/phppgadmin
+- name: Run phpPgAdmin container
+  shell: docker run --name phppgadmin -i -t -d -e PHP_PG_ADMIN_SERVER_HOST={{gateway.stdout}} -p 9090:80 --restart=always dockage/phppgadmin
