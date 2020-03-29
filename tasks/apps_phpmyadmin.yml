@@ -21,4 +21,4 @@
          -i -t -d \
          -p 0.0.0.0:9090:80 \
          -e PMA_HOST={{gateway.stdout}} \
-         phpmyadmin
+         phpmyadmin/phpmyadmin
