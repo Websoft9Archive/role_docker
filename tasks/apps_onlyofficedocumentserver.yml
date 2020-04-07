@@ -6,7 +6,7 @@
   
 - name: Copy certificate to certs directory
   copy:
-    src: "onlyofficedocumentserver/{{item}}"
+    src: "onlyofficedocumentserver/certs/{{item}}"
     dest: /data/wwwroot/onlyoffice/DocumentServer/data/certs
     mode: 0400
   with_items:
