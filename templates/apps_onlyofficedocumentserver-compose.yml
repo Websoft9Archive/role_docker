@@ -4,12 +4,13 @@ services:
     container_name: onlyoffice-documentserver
     image: onlyoffice/documentserver:latest
     volumes:
-      - /data/wwwroot/onlyoffice/DocumentServer/logs:/var/log/onlyoffice
-      - /data/wwwroot/onlyoffice/DocumentServer/data/certs:/var/www/onlyoffice/Data
+      - /app/onlyoffice/DocumentServer/logs:/var/log/onlyoffice
+      - /app/onlyoffice/DocumentServer/data/certs:/var/www/onlyoffice/Data
     environment:
       - SSL_CERTIFICATE_PATH=/var/www/onlyoffice/Data/onlyoffice.crt
       - SSL_KEY_PATH=/var/www/onlyoffice/Data/onlyoffice.key
     stdin_open: true
     restart: always
     ports:
+      - "9002:80"
       - "9003:443"
