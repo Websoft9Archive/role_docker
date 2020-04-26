@@ -4,6 +4,7 @@
 
 1. 应用部署格式优化
 2. OnlyOfficedocumentsever：测试http与https切换，在集成-文件服务里设置文件编辑服务地址的时候，提示Api url: Service is not defined，增加持久化目录
+3. 增加Jenkins应用
 
 ## Logs
 
