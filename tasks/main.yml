@@ -8,7 +8,7 @@
     name: requests
     extra_args: " -U --ignore-installed"
     
-- name: pip install docker-compose
+- name: pip install docker
   pip:
     name: docker
     extra_args:  --ignore-installed
