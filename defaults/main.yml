@@ -4,6 +4,7 @@ region: "0"
 #Docker application name which you want to pull, data format: Lists
 #docker_applications: 
 #  - adminmongo
+#  - adminer
 #  - onlyofficedocumentserver
 #  - phpmyadmin
 #  - phppgadmin
