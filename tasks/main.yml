@@ -8,10 +8,15 @@
     name: requests
     extra_args: " -U --ignore-installed"
     
-- name: pip requirements
+- name: pip install docker-compose
   pip:
     name: docker
     extra_args:  --ignore-installed
+    
+- name: pip3 install docker-compose
+  pip:
+    name: docker-compose
+  when: ansible_python.version.major == 3
 
 - name: Install Docker Compose
   shell: |
