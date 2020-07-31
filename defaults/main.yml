@@ -1,6 +1,9 @@
 #global var
 region: "0"
 
+# refer to: https://github.com/docker/compose/releases/
+docker_compose_version: "1.26.2"
+
 #Docker application name which you want to pull, data format: Lists
 #docker_applications: 
 #  - adminmongo
