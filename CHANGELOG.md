@@ -11,6 +11,7 @@
 
 ### Bug Fixes
 
+* 2020-07-31  add soft link in TASK [role_docker : Install Docker Compose] to correct error "/bin/sh: docker-compose: not found" in CentOS of Azure, AmazonLinux
 * 2020-05-15  Portainer 默认端口修改为9000，避免与MySQL容器端口冲突
 * 2020-03-29  弃用所有ansible docker模块，直接使用Docker命令
 * 2020-02-14  修复Docker应用重试安装报错的问题
