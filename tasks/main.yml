@@ -8,7 +8,7 @@
     name: requests
     extra_args: " -U --ignore-installed"
     
-- name: pip install docker
+- name: pip install docker package - A Python library for the Docker Engine API.
   pip:
     name: docker
     extra_args:  --ignore-installed
