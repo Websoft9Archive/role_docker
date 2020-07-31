@@ -8,12 +8,12 @@
     name: requests
     extra_args: " -U --ignore-installed"
     
-- name: pip install docker package - A Python library for the Docker Engine API.
+- name: pip install python docker package - A Python library for the Docker Engine API.
   pip:
     name: docker
     extra_args:  --ignore-installed
     
-- name: pip3 install docker-compose
+- name: pip3 install python docker-compose package
   pip:
     name: docker-compose
   when: ansible_python.version.major == 3
