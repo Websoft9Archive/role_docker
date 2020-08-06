@@ -3,10 +3,10 @@
   include: "{{ansible_os_family}}.yml"
 
 # the same tasks of different os family
-- name: pip update requests
-  pip:
-    name: requests
-    extra_args: " -U --ignore-installed"
+#- name: pip update requests
+#  pip:
+#    name: requests
+#    extra_args: " -U --ignore-installed"
     
 - name: pip install python docker package - A Python library for the Docker Engine API.
   pip:
