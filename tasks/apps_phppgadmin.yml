@@ -22,9 +22,9 @@
     dest: /data/config/docker/phppgadmin/docker-compose.yml
    
  - name: Run docker phppgadmin
-  shell:
-    docker-compose up -d
-  args:
-    chdir: /data/config/docker/phppgadmin/
+   shell:
+     docker-compose up -d
+   args:
+     chdir: /data/config/docker/phppgadmin/
 
 
