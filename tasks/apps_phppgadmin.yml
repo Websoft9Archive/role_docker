@@ -11,6 +11,11 @@
 #- name: Run phpPgAdmin container
 #  shell: docker run --name phppgadmin -i -t -d -e PHP_PG_ADMIN_SERVER_HOST={{gateway.stdout}} -p 9090:80 --restart=always dockage/phppgadmin
 
+- name: Create docker directory
+  file:
+    path: /data/config/docker
+    state: directory
+    
 - name: copy docker-compose.yml to /data/config/docker/
   template:
     src: apps_phppgadmin-compose.yml
@@ -20,4 +25,4 @@
   shell:
     docker-compose up -d
   args:
-    chdir: /data/wwwroot/
+    chdir: /data/config/docker/
