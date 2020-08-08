@@ -19,10 +19,10 @@
 - name: copy docker-compose.yml to /data/config/docker/
   template:
     src: apps_phppgadmin_compose.yml
-    dest: /data/config/docker/apps_phppgadmin-compose.yml
+    dest: /data/config/docker/apps_phppgadmin_compose.yml
 
 - name: Run onlyoffice/documentserver
   shell:
-    docker-compose up -d
+    apps_phppgadmin_compose up -d
   args:
     chdir: /data/config/docker/
