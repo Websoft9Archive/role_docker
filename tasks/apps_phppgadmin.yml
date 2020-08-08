@@ -21,7 +21,7 @@
     src: apps_phppgadmin_compose.yml
     dest: /data/config/docker/apps_phppgadmin_compose.yml
 
-- name: Run onlyoffice/documentserver
+- name: Run docker phppgadmin
   shell:
     apps_phppgadmin_compose up -d
   args:
