@@ -13,18 +13,18 @@
 
 - name: Create docker directory
   file:
-    path: /data/config/docker
+    path: /data/config/docker/phppgadmin
     state: directory
     
 - name: copy docker-compose.yml to /data/config/docker/
   template:
     src: apps_phppgadmin_compose.yml
-    dest: /data/config/docker/docker-compose.yml
+    dest: /data/config/docker/phppgadmin/docker-compose.yml
    
  - name: Run docker phppgadmin
   shell:
     docker-compose up -d
   args:
-    chdir: /data/config/docker/
+    chdir: /data/config/docker/phppgadmin/
 
 
