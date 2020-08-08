@@ -3,6 +3,7 @@ region: "0"
 
 # refer to: https://github.com/docker/compose/releases/
 docker_compose_version: "1.26.2"
+docker_compose_host: "172.27.0.1"
 
 #Docker application name which you want to pull, data format: Lists
 #docker_applications: 
