@@ -4,9 +4,7 @@
     name: [device-mapper-persistent-data,lvm2]
 
 - name: Add Docker repository
-  template:
-    src: docker.repo.jinja2
-    dest: /etc/yum.repos.d/docker.repo
+  shell: wget -O /etc/yum.repos.d/docker-ce.repo {{docker_repository_url}}
 
 - name: Set yum priority for docker.repo, because amzn2-core,amzn2extra-docker may conflict
   blockinfile:
