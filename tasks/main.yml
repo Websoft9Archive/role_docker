@@ -2,14 +2,6 @@
 - name: Install for {{ansible_os_family}} os family
   include: "{{ansible_os_family}}.yml"
 
-# install docker and other packages
-#- name: install Docker
-#  shell: |
-#    sudo yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine
-#    sudo yum install -y yum-utils
-#   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-#    sudo yum install docker-ce docker-ce-cli containerd.io -y
-
 ### ln -sf /usr/local/bin/docker-compose  /usr/bin is need, otherwise CentOS on Azure and AWS error
 - name: Install Docker Compose
   shell: |
