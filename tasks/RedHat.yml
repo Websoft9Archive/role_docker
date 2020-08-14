@@ -3,18 +3,18 @@
   yum:
     name: [device-mapper-persistent-data,lvm2]
 
-- name: Add repository
+- name: Add Docker repository
   template:
     src: docker.repo.jinja2
     dest: /etc/yum.repos.d/docker.repo
-  when: ansible_distribution != 'Amazon'
-      
 
-- name: Install Docker
+- name: Install Docker on {{ansible_distribution}}
   yum:
     name: [docker-ce,docker-ce-cli,containerd.io]
   when: ansible_distribution != 'Amazon'
   
-- name: Install Docker
-  shell: amazon-linux-extras install docker -y
+- name: Install Docker on {{ansible_distribution}}
+  yum:
+    name: [docker-ce,docker-ce-cli,containerd.io]
+    disablerepo: "amzn2-core"
   when: ansible_distribution == 'Amazon'
