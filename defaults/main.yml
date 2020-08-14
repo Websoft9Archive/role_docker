@@ -5,6 +5,8 @@ region: "0"
 docker_compose_version: "1.26.2"
 docker_compose_host: "172.17.0.1"
 
+docker_repository_url: "https://download.docker.com/linux/centos/docker-ce.repo"
+
 #Docker application name which you want to pull, data format: Lists
 #docker_applications: 
 #  - adminmongo
