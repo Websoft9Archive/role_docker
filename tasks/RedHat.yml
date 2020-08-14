@@ -16,5 +16,5 @@
 - name: Install Docker on {{ansible_distribution}}
   yum:
     name: [docker-ce,docker-ce-cli,containerd.io]
-    disablerepo: "amzn2-core"
+    disablerepo: "amzn2-core,amzn2extra-docker"
   when: ansible_distribution == 'Amazon'
