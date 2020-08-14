@@ -1,3 +1,5 @@
+# installation refer to: https://docs.docker.com/engine/install/centos/
+# abandon Amazon extra repository for Docker
 
 - name: Install required packages
   yum:
@@ -18,10 +20,5 @@
 - name: Install Docker on {{ansible_distribution}}
   yum:
     name: [docker-ce,docker-ce-cli,containerd.io]
-  when: ansible_distribution != 'Amazon'
-  
-- name: Install Docker on {{ansible_distribution}}
-  yum:
-    name: [docker-ce,docker-ce-cli,containerd.io]
-    disablerepo: "amzn2-core,amzn2extra-docker"
-  when: ansible_distribution == 'Amazon'
+    update_cache: yes
+    state: latest
