@@ -8,15 +8,6 @@
 - name: Add Docker repository
   shell: wget -O /etc/yum.repos.d/docker-ce.repo {{docker_repository_url}}
 
-- name: Set yum priority for docker.repo, because amzn2-core,amzn2extra-docker may conflict
-  blockinfile:
-    path: "{{ item }}"
-    insertafter: "enabled=1"
-    block: "priority=1"
-  loop:
-    - /etc/yum.repos.d/docker-ce.repo
-  when: ansible_distribution == "Amazon"
-
 - name: Install Docker on {{ansible_distribution}}
   yum:
     name: [docker-ce,docker-ce-cli,containerd.io]
