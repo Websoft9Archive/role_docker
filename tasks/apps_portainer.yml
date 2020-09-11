@@ -3,9 +3,9 @@
   file:
     path: /data/portainer
     state: directory
-    owner: root
-    group: root
-    mode: 0755
+    owner: docker
+    group: docker
+    mode: 0750
 
 - name: copy docker-compose.yml to /data/config/docker/
   template:
