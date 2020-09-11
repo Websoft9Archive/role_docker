@@ -17,3 +17,11 @@
     docker-compose up -d
   args:
     chdir: /data/portainer/
+    
+- name: Create a portainer symbolic link
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+    state: link
+  with_items:
+    - {src: /data/portainer/docker-compose.yml,dest: /data/config/docker-compose.yml}
