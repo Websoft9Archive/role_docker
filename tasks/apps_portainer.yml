@@ -12,7 +12,7 @@
     src: apps_portainer_compose.yml
     dest: /data/portainer/docker-compose.yml
  
-- name: Run docker phppgadmin
+- name: Run docker portainer
   shell:
     docker-compose up -d
   args:
