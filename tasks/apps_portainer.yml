@@ -25,3 +25,14 @@
          -v /var/run/docker.sock:/var/run/docker.sock \
          -v /data/portainer:/data \
          portainer/portainer
+
+- name: copy docker-compose.yml to /data/config/docker/
+  template:
+    src: apps_phppgadmin_compose.yml
+    dest: /data/config/docker/phppgadmin/docker-compose.yml
+ 
+- name: Run docker phppgadmin
+  shell:
+    docker-compose up -d
+  args:
+    chdir: /data/config/docker/phppgadmin/
