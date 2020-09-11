@@ -9,7 +9,7 @@ services:
     image: portainer/portainer:latest
     restart: always
     ports:
-      - 9091:9000
+      - 9000:9000
     volumes:
       - /data/wwwroot/portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
