@@ -1,38 +1,19 @@
 ---
 - name: Create /data/portainer directory
   file:
-    path: /data/config/docker/portainer
+    path: /data/portainer
     state: directory
     owner: root
     group: root
     mode: 0755
-  
-- name: pull portainer image
-  shell: docker pull portainer/portainer
-
-- name: Create a volume
-  docker_volume:
-    name: portainer_data
-
-- name: Delete the running portainer if exist for re-install
-  shell: if [ $(docker ps -aq --filter name=portainer) ];then docker stop portainer;docker rm portainer;fi
-
-- name: Run Portainer container
-  shell: sudo docker run --name portainer  \
-         --restart=always \
-         -i -t -d \
-         -p 9000:9000 \
-         -v /var/run/docker.sock:/var/run/docker.sock \
-         -v /data/portainer:/data \
-         portainer/portainer
 
 - name: copy docker-compose.yml to /data/config/docker/
   template:
     src: apps_portainer_compose.yml
-    dest: /data/config/docker/portainer/docker-compose.yml
+    dest: /data/portainer/docker-compose.yml
  
 - name: Run docker phppgadmin
   shell:
     docker-compose up -d
   args:
-    chdir: /data/config/docker/portainer/
+    chdir: /data/portainer/
