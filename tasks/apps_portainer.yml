@@ -1,7 +1,7 @@
 ---
 - name: Create /data/portainer directory
   file:
-    path: /data/portainer
+    path: /data/config/docker/portainer
     state: directory
     owner: root
     group: root
