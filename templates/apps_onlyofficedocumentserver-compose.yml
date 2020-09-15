@@ -4,8 +4,8 @@ services:
     container_name: onlyoffice-documentserver
     image: onlyoffice/documentserver:latest
     volumes:
-      - /app/onlyoffice/documentserver/logs:/var/log/onlyoffice
-      - /app/onlyoffice/documentserver/data/certs:/var/www/onlyoffice/Data
+      - /data/apps/onlyoffice/documentserver/logs:/var/log/onlyoffice
+      - /data/apps/onlyoffice/documentserver/data/certs:/var/www/onlyoffice/Data
     environment:
       - SSL_CERTIFICATE_PATH=/var/www/onlyoffice/Data/onlyoffice.crt
       - SSL_KEY_PATH=/var/www/onlyoffice/Data/onlyoffice.key
