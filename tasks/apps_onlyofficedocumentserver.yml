@@ -5,24 +5,6 @@
 
 - debug: msg="{{docker_pull_status.stdout}}"
 
-- block:
-  - name: Create cert directory
-    file:
-      path: /data/apps/onlyoffice-documentserver/certs
-      state: directory
-      recurse: true
-
-  - name: Copy certificate to certs directory
-    copy:
-      src: "onlyofficedocumentserver/certs/{{item}}"
-      dest: /data/apps/onlyoffice-documentserver/certs
-      mode: 0400
-    with_items:
-      - onlyoffice.crt
-      - onlyoffice.csr
-      - onlyoffice.key
-      - dhparam.pem
-
 - name: Copy docker-compose.yml to /data/apps/onlyoffice-documentserver
   template:
     src: apps_onlyofficedocumentserver-compose.yml
@@ -33,3 +15,21 @@
     docker-compose up -d
   args:
     chdir: /data/apps/onlyoffice-documentserver
+    
+ - block:
+  - name: Create cert directory
+    file:
+      path: /data/apps/onlyoffice-documentserver/data/certs
+      state: directory
+      recurse: true
+
+  - name: Copy certificate to certs directory
+    copy:
+      src: "onlyofficedocumentserver/certs/{{item}}"
+      dest: /data/apps/onlyoffice-documentserver/data/certs
+      mode: 0400
+    with_items:
+      - onlyoffice.crt
+      - onlyoffice.csr
+      - onlyoffice.key
+      - dhparam.pem
