@@ -23,7 +23,7 @@
       - onlyoffice.key
       - dhparam.pem
 
-- name: Copy docker-compose.yml to /data/wwwroot/
+- name: Copy docker-compose.yml to /data/apps/onlyoffice-documentserver
   template:
     src: apps_onlyofficedocumentserver-compose.yml
     dest: /data/apps/onlyoffice-documentserver/docker-compose.yml
