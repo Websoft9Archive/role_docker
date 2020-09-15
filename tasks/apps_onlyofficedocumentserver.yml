@@ -3,6 +3,7 @@
   file:
     path: /data/wwwroot/onlyoffice/DocumentServer/data/certs
     state: directory
+    recurse: true
   
 - name: Copy certificate to certs directory
   copy:
@@ -18,12 +19,12 @@
 - name: copy docker-compose.yml to /data/wwwroot/
   template:
     src: apps_onlyofficedocumentserver-compose.yml
-    dest: /data/wwwroot/docker-compose.yml
+    dest: /data/wwwroot/onlyoffice/docker-compose.yml
 
 - name: Run onlyoffice/documentserver
   shell:
     docker-compose up -d
   args:
-    chdir: /data/wwwroot/
+    chdir: /data/wwwroot/onlyoffice
   
       
