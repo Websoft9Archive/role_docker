@@ -5,7 +5,8 @@ services:
     image: onlyoffice/documentserver:latest
     volumes:
       - /data/apps/onlyoffice/documentserver/logs:/var/log/onlyoffice
-      - /data/apps/onlyoffice/documentserver/data/certs:/var/www/onlyoffice/Data
+      - /data/apps/onlyoffice/documentserver/data:/var/www/onlyoffice/Data
+      - /data/apps/onlyoffice-documentserver/postgresql:/var/lib/postgresql
     environment:
       - SSL_CERTIFICATE_PATH=/var/www/onlyoffice/Data/onlyoffice.crt
       - SSL_KEY_PATH=/var/www/onlyoffice/Data/onlyoffice.key
