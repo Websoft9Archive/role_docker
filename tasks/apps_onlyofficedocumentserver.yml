@@ -26,10 +26,10 @@
 - name: Copy docker-compose.yml to /data/wwwroot/
   template:
     src: apps_onlyofficedocumentserver-compose.yml
-    dest: /data/wwwroot/onlyoffice/docker-compose.yml
+    dest: /data/apps/onlyoffice/docker-compose.yml
 
 - name: Run onlyoffice/documentserver
   shell:
     docker-compose up -d
   args:
-    chdir: /data/wwwroot/onlyoffice   
+    chdir: /data/apps/onlyoffice
