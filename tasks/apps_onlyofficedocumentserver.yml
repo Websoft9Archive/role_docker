@@ -1,21 +1,21 @@
 ---
 - name: pull onlyoffice/documentserver image
   shell: sudo docker pull onlyoffice/documentserver
-  register: pull_docker_status
+  register: docker_pull_status
 
-- debug: msg="{{pull_docker_status.stdout}}"
+- debug: msg="{{docker_pull_status.stdout}}"
 
 - block:
-  - name: Create certs directory
+  - name: Create cert directory
     file:
-      path: /data/wwwroot/onlyoffice/DocumentServer/data/certs
+      path: /data/apps/onlyoffice-documentserver/cert
       state: directory
       recurse: true
 
   - name: Copy certificate to certs directory
     copy:
       src: "onlyofficedocumentserver/certs/{{item}}"
-      dest: /data/wwwroot/onlyoffice/DocumentServer/data/certs
+      dest: /data/apps/onlyoffice-documentserver/cert
       mode: 0400
     with_items:
       - onlyoffice.crt
@@ -26,10 +26,10 @@
 - name: Copy docker-compose.yml to /data/wwwroot/
   template:
     src: apps_onlyofficedocumentserver-compose.yml
-    dest: /data/apps/onlyoffice/docker-compose.yml
+    dest: /data/apps/onlyoffice-documentserver/docker-compose.yml
 
 - name: Run onlyoffice/documentserver
   shell:
     docker-compose up -d
   args:
-    chdir: /data/apps/onlyoffice
+    chdir: /data/apps/onlyoffice-documentserver
