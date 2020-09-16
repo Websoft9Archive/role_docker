@@ -16,7 +16,7 @@
   args:
     chdir: /data/apps/onlyoffice-documentserver
     
- - block:
+- block:
   - name: Create cert directory
     file:
       path: /data/apps/onlyoffice-documentserver/data/certs
