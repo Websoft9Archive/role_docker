@@ -10,7 +10,7 @@ services:
       - /data/apps/onlyoffice-documentserver/data:/var/www/onlyoffice/Data
       - /data/apps/onlyoffice-documentserver/postgresql:/var/lib/postgresql
     environment:
-      - SSL_VERIFY_CLIENT=false
+      - SSL_VERIFY_CLIENT: false
     stdin_open: true
     restart: always
     ports:
