@@ -4,30 +4,30 @@
 # 3 docker-compose up -d
 # 4 create symbolic link
 
-- name: Create /data/portainer directory
+- name: Create /data/appname directory
   file:
-    path: /data/apps/portainer
+    path: /data/apps/appname
     state: directory
     owner: docker
     group: docker
     mode: 0750
 
-- name: copy docker-compose.yml to Portainer dir
+- name: copy docker-compose.yml to appname dir
   template:
     src: apps_portainer_compose.yml
-    dest: /data/apps/portainer/docker-compose.yml
+    dest: /data/apps/appname/docker-compose.yml
  
-- name: Run docker portainer
+- name: docker-compose up
   shell:
     docker-compose up -d
   args:
-    chdir: /data/apps/portainer
+    chdir: /data/apps/appname
     
-- name: Create a portainer symbolic link
+- name: Create symbolic links
   file:
     src: '{{item.src}}'
     dest: '{{item.dest}}'
     state: link
   with_items:
-    - {src: /data/apps/portainer/docker-compose.yml,dest: /data/config/apps_portainer_compose.yml}
-    - {src: /data/apps/portainer,dest: /data/wwwroot}
+    - {src: /data/apps/appname/docker-compose.yml,dest: /data/config/apps_appname_compose.yml}
+    - {src: /data/apps/appname,dest: /data/wwwroot}
