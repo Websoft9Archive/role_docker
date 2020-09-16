@@ -15,5 +15,4 @@ docker_addnetwork: "apps"
 
 # refer to: https://github.com/docker/compose/releases/
 docker_compose_version: "1.26.2"
-docker_gateway: "172.17.0.1"
 docker_repository_url: "https://download.docker.com/linux/centos/docker-ce.repo"
