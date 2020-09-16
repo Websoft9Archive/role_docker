@@ -4,7 +4,7 @@
     path: /data/apps/onlyoffice-documentserver
     state: directory
     recurse: true
-      
+    
 - name: pull onlyoffice/documentserver image
   shell: sudo docker pull onlyoffice/documentserver
   register: docker_pull_status
@@ -15,7 +15,7 @@
   template:
     src: apps_onlyofficedocumentserver-compose.yml
     dest: /data/apps/onlyoffice-documentserver/docker-compose.yml
-
+    
 - name: Run onlyoffice/documentserver
   shell:
     docker-compose up -d
