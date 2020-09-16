@@ -1,4 +1,10 @@
 ---
+- name: Create cert directory
+  file:
+    path: /data/apps/onlyoffice-documentserver
+    state: directory
+    recurse: true
+      
 - name: pull onlyoffice/documentserver image
   shell: sudo docker pull onlyoffice/documentserver
   register: docker_pull_status
