@@ -21,7 +21,7 @@
     state: restarted
     
 - name: Create an network for all application
-  shell: docker network create apps
+  shell: docker network create {{docker_addnetwork}}
 
 - name: Check Docker Version
   shell: sudo sh -c "docker -v 1>> /data/logs/install_version.txt"
