@@ -14,7 +14,7 @@
 
 - name: copy docker-compose.yml to appname dir
   template:
-    src: apps_portainer_compose.yml
+    src: apps_appname_compose.yml
     dest: /data/apps/appname/docker-compose.yml
  
 - name: docker-compose up
