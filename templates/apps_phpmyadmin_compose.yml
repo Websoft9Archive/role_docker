@@ -4,7 +4,7 @@ services:
       image: phpmyadmin/phpmyadmin
       container_name: phpmyadmin
       environment:
-       - PMA_HOST=172.17.0.1
+       - PMA_HOST={{docker_gateway.stdout}}
        - PMA_PORT=3306
       restart: always
       ports:
