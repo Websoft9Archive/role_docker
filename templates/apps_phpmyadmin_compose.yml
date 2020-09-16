@@ -8,9 +8,9 @@ services:
        - PMA_PORT=3306
       restart: always
       ports:
-       - 9090:80
+       - {{docker_apps_phpmyadmin_port}}:80
       volumes:
-       - /sessions
+       - /data/apps/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
 
 networks:
   default:
