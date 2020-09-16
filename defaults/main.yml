@@ -12,6 +12,12 @@ docker_region: 0
 docker_applications: ''
 docker_addnetwork: "apps"
 
+docker_apps_phpmyadmin_port: 9090
+docker_apps_phppgadmin_port: 9090
+docker_apps_portainer_port: 9000
+docker_apps_onlyofficedocumentserver_http_port: 9002
+docker_apps_onlyofficedocumentserver_https_port: 9003
+
 
 # refer to: https://github.com/docker/compose/releases/
 docker_compose_version: "1.26.2"
