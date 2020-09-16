@@ -16,3 +16,8 @@ services:
     ports:
       - "9002:80"
       - "9003:443"
+      
+ networks:
+  default:
+    external:
+      name: apps
