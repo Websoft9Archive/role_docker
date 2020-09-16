@@ -13,9 +13,6 @@ services:
       - SSL_VERIFY_CLIENT=false
     stdin_open: true
     restart: always
-    networks:
-      onlyoffice-documentserver:
-        driver: bridge
     ports:
       - "9002:80"
       - "9003:443"
