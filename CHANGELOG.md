@@ -20,4 +20,5 @@
 
 ### Features
 
+* 2020-09-16  add create a new network named apps
 * 2020-03-14  增加常用的基于Docker的应用安装项，包括：Portainer, phpMyAdmin, phpPgAdmin, onlyofficedocumentserver, AdminMongo等  
