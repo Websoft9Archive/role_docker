@@ -17,5 +17,5 @@ docker_repository_url: "https://download.docker.com/linux/centos/docker-ce.repo"
 #  - phppgadmin
 #  - portainer
 
-docker_addnetwork: "apps"
 docker_applications: ''
+docker_addnetwork: "apps"
