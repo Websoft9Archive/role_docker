@@ -3,6 +3,8 @@
   file:
     path: /data/apps/onlyoffice-documentserver
     state: directory
+    owner: docker
+    group: docker
     recurse: true
     
 - name: pull onlyoffice/documentserver image
