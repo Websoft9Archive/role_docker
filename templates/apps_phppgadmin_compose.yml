@@ -4,7 +4,7 @@ services:
     restart: always
     image: dockage/phppgadmin
     ports:
-      - "9090:80"
+      - "{{docker_apps_phppgadmin_port}}:80"
     environment:
       - PHP_PG_ADMIN_SERVER_DESC=PostgreSQL
       - PHP_PG_ADMIN_SERVER_HOST={{docker_gateway.stdout}}
