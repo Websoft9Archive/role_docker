@@ -1,5 +1,5 @@
 ---
-- name: Create cert directory
+- name: Create /data/apps/onlyoffice-documentserver directory
   file:
     path: /data/apps/onlyoffice-documentserver
     state: directory
