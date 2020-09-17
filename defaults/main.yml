@@ -13,6 +13,8 @@ docker_region: 0
 docker_applications: ''
 docker_addnetwork: "apps"
 
+docker_apps_adminmongo_port: 9091
+docker_apps_mongoexpress_port: 9091
 docker_apps_phpmyadmin_port: 9090
 docker_apps_phppgadmin_port: 9090
 docker_apps_portainer_port: 9000
