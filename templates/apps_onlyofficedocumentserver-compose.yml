@@ -15,7 +15,6 @@ services:
     restart: always
     ports:
       - "{{docker_apps_onlyofficedocumentserver_http_port}}:80"
-      - "{{docker_apps_onlyofficedocumentserver_https_port}}:443"
       
 networks:
   default:
