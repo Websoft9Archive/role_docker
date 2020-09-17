@@ -4,6 +4,7 @@ docker_region: 0
 #docker_applications: 
 #  - adminmongo
 #  - adminer
+#  - mongoexpress
 #  - onlyofficedocumentserver
 #  - phpmyadmin
 #  - phppgadmin
