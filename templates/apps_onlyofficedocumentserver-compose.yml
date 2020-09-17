@@ -14,7 +14,7 @@ services:
     stdin_open: true
     restart: always
     ports:
-      - "{{docker_apps_onlyofficedocumentserver_http_port}}:80"
+      - "{{docker_apps_onlyofficedocumentserver_port}}:80"
       
 networks:
   default:
