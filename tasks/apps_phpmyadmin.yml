@@ -16,3 +16,12 @@
     docker-compose up -d
   args:
     chdir: /data/apps/phpmyadmin
+    
+- name: Create a symbolic link
+  file:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+    state: link
+  with_items:
+    - {src: /data/apps/phpmyadmin/docker-compose.yml,dest: /data/config/apps_phpmyadmin_compose.yml}
+    - {src: /data/apps/phpmyadmin,dest: /data/wwwroot/phpmyadmin}
