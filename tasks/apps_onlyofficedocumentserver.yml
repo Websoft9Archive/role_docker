@@ -48,5 +48,5 @@
     dest: '{{item.dest}}'
     state: link
   with_items:
-    - {src: /data/apps/onlyoffice-documentserver/docker-compose.yml,dest: /data/config/apps_portainer_compose.yml}
-    - {src: /data/apps/onlyoffice-documentserver,dest: /data/wwwroot/onlyoffice-documentserver}
+    - {src: /data/apps/onlyoffice-documentserver/docker-compose.yml,dest: /data/config/docker-compose.yml}
+    - {src: /data/apps/onlyoffice-documentserver,dest: /data/wwwroot}
