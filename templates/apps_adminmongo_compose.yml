@@ -11,7 +11,7 @@ services:
       ports:
        - {{docker_apps_adminmongo_port}}:1234
       volumes:
-       - /data/apps/adminmongo/config/app.json:/config/app.json
+       - /data/apps/adminmongo/config:/config
 
 networks:
   default:
