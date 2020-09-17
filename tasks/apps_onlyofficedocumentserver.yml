@@ -49,4 +49,4 @@
     state: link
   with_items:
     - {src: /data/apps/onlyoffice-documentserver/docker-compose.yml,dest: /data/config/docker-compose.yml}
-    - {src: /data/apps/onlyoffice-documentserver,dest: /data/wwwroot}
+    - {src: /data/apps/onlyoffice-documentserver,dest: /data/wwwroot/onlyoffice-documentserver}
