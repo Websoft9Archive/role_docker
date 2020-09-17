@@ -1,1 +1,19 @@
+version: "1.0"
+services:
+  phpmyadmin:
+      image: mrvautin/adminmongo
+      container_name: adminmongo
+      environment:
+       - PORT=1234
+       - local=en
+       - HOST=0.0.0.0
+      restart: always
+      ports:
+       - {{docker_apps_adminmongo_port}}:1234
+      volumes:
+       - /data/apps/adminmongo/config/app.json:/config/app.json
 
+networks:
+  default:
+    external:
+      name: apps
