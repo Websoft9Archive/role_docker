@@ -1,0 +1,17 @@
+# refer to: https://hub.docker.com/_/adminer/
+
+version: "2.0"
+services:
+  adminer:
+      image: adminer
+      container_name: adminer
+      environment:
+       - ADMINER_DEFAULT_SERVER={{docker_gateway.stdout}}
+      restart: always
+      ports:
+       - {{docker_apps_adminer_port}}:8080
+
+networks:
+  default:
+    external:
+      name: apps
