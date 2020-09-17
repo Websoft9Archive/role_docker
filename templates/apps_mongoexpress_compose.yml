@@ -1,0 +1,18 @@
+# refer to: https://hub.docker.com/_/mongo-express
+
+version: "2.2"
+services:
+  mongoexpress:
+      image: mongo-express
+      container_name: mongoexpress
+      environment:
+        - ME_CONFIG_MONGODB_PORT=27017
+        - ME_CONFIG_MONGODB_SERVER={{docker_gateway.stdout}}
+      restart: always
+      ports:
+        - {{docker_apps_mongoexpress_port}}:8081
+
+networks:
+  default:
+    external:
+      name: apps
