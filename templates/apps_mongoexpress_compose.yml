@@ -6,11 +6,14 @@ services:
       image: mongo-express
       container_name: mongoexpress
       environment:
-        - ME_CONFIG_MONGODB_PORT=27017
-        - ME_CONFIG_MONGODB_SERVER={{docker_gateway.stdout}}
+       - ME_CONFIG_BASICAUTH_USERNAME='admin'
+       - ME_CONFIG_BASICAUTH_PASSWORD='admin123'
+       - ME_CONFIG_MONGODB_SERVER={{docker_gateway.stdout}}
+       - ME_CONFIG_MONGODB_ADMINUSERNAME=root
+       - ME_CONFIG_MONGODB_ADMINPASSWORD=123456
       restart: always
       ports:
-        - {{docker_apps_mongoexpress_port}}:8081
+       - {{docker_apps_mongoexpress_port}}:8081
 
 networks:
   default:
