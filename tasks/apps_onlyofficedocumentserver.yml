@@ -1,7 +1,7 @@
 ---
-- name: Create /data/apps/onlyoffice-documentserver directory
+- name: Create /data/apps/onlyofficedocumentserver directory
   file:
-    path: /data/apps/onlyoffice-documentserver
+    path: /data/apps/onlyofficedocumentserver
     state: directory
     owner: docker
     group: docker
@@ -16,13 +16,13 @@
 - name: Copy docker-compose.yml to /data/apps/onlyoffice-documentserver
   template:
     src: apps_onlyofficedocumentserver-compose.yml
-    dest: /data/apps/onlyoffice-documentserver/docker-compose.yml
+    dest: /data/apps/onlyofficedocumentserver/docker-compose.yml
     
 - name: Run onlyoffice/documentserver
   shell:
     docker-compose up -d
   args:
-    chdir: /data/apps/onlyoffice-documentserver
+    chdir: /data/apps/onlyofficedocumentserver
 
 - name: Create symbolic links
   file:
@@ -30,5 +30,5 @@
     dest: '{{item.dest}}'
     state: link
   with_items:
-    - {src: /data/apps/onlyoffice-documentserver/docker-compose.yml,dest: /data/config/docker-compose.yml}
-    - {src: /data/apps/onlyoffice-documentserver,dest: /data/wwwroot/onlyoffice-documentserver}
+    - {src: /data/apps/onlyofficedocumentserver/docker-compose.yml,dest: /data/config/docker-compose.yml}
+    - {src: /data/apps/onlyofficedocumentserver,dest: /data/wwwroot/onlyofficedocumentserver}
