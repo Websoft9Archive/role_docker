@@ -7,6 +7,7 @@
 3. 增加Jenkins应用
 4. 增加pgAdmin4应用
 5. mongoexpress Authorization Required
+6. add https://hub.docker.com/u/collabora
 
 ## Logs
 
