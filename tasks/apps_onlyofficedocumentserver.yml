@@ -13,7 +13,7 @@
 
 - debug: msg="{{docker_pull_status.stdout}}"
 
-- name: Copy docker-compose.yml to /data/apps/onlyoffice-documentserver
+- name: Copy docker-compose.yml to /data/apps/onlyofficedocumentserver
   template:
     src: apps_onlyofficedocumentserver-compose.yml
     dest: /data/apps/onlyofficedocumentserver/docker-compose.yml
