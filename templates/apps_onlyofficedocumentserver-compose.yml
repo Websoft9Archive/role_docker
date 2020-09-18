@@ -6,9 +6,9 @@ services:
     container_name: onlyoffice-documentserver
     image: onlyoffice/documentserver:latest
     volumes:
-      - /data/apps/onlyoffice-documentserver/logs:/var/log/onlyoffice
-      - /data/apps/onlyoffice-documentserver/data:/var/www/onlyoffice/Data
-      - /data/apps/onlyoffice-documentserver/postgresql:/var/lib/postgresql
+      - /data/apps/onlyofficedocumentserver/logs:/var/log/onlyoffice
+      - /data/apps/onlyofficedocumentserver/data:/var/www/onlyoffice/Data
+      - /data/apps/onlyofficedocumentserver/postgresql:/var/lib/postgresql
     stdin_open: true
     restart: always
     ports:
