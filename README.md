@@ -82,3 +82,7 @@ Copyright (c) 2016-present, Websoft9
 #### Why did this project not use ansible's docker module?
 
 The Ansible Docker module uses API to communicate with Docker, which is prone to errors. Therefore, enabling this module and directly using Docker commands are more stable and reliable, and you can be familiar with Docker commands. You don’t need to master the use of Ansible.
+
+#### How to add new application of Docker?
+
+You just need to add a docker compose file to the templates folder refer to /framework/apps-template-compose.yml
