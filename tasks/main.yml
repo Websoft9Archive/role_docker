@@ -32,6 +32,8 @@
   shell: sudo sh -c "docker -v 1>> /data/logs/install_version.txt"
 
 - name: Install Docker applications
-  include: apps.yml docker_appname="{{item}}"
+  include: apps.yml docker_appname="{{docker_applications_item}}"
   loop: "{{docker_applications}}"
+  loop_control:
+    loop_var: docker_applications_item
   when: docker_applications is not none and docker_applications != ""
