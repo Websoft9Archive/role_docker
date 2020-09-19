@@ -1,6 +1,6 @@
 - name: Create docker directory
   file:
-    path: {{docker_apps_dir}}/adminer
+    path: {{docker_apps_dir}}/{{docker_appname}}
     state: directory
     owner: docker
     group: docker
@@ -8,14 +8,14 @@
     
 - name: copy docker-compose.yml
   template:
-    src: apps_adminer_compose.yml
-    dest: {{docker_apps_dir}}/adminer/docker-compose.yml
+    src: apps_{{docker_appname}}_compose.yml
+    dest: {{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml
  
 - name: Run docker-compose
   shell:
     docker-compose up -d
   args:
-    chdir: {{docker_apps_dir}}/adminer
+    chdir: {{docker_apps_dir}}/{{docker_appname}}
     
 - name: Create a symbolic link
   file:
@@ -23,5 +23,5 @@
     dest: '{{item.dest}}'
     state: link
   with_items:
-    - {src: {{docker_apps_dir}}/adminer/docker-compose.yml,dest: /data/config/apps_adminer_compose.yml}
-    - {src: {{docker_apps_dir}}/adminer,dest: /data/wwwroot/adminer}
+    - {src: {{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml,dest: /data/config/apps_{{docker_appname}}_compose.yml}
+    - {src: {{docker_apps_dir}}/{{docker_appname}},dest: /data/wwwroot/{{docker_appname}}}
