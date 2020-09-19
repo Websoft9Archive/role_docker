@@ -1,3 +1,11 @@
+# This framework is for you install docker application
+# 1 create directory
+# 2 copy docker-compose.yml file
+# 3 docker-compose up -d
+# 4 create symbolic link
+# You just need to add a docker compose file to the templates folder of this role when you want to develop more application.
+
+
 - debug:
     msg: "{{docker_appname}} will be installed"
 
