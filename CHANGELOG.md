@@ -2,24 +2,21 @@
 
 ## To do
 
-1. 应用部署格式优化
-2. OnlyOfficedocumentsever 
-4. 增加pgAdmin4应用
-5. mongoexpress Authorization Required
-6. add https://hub.docker.com/u/collabora
+1. Add application pgAdmin4
+2. Fix mongoexpress Authorization Required
+3. add https://hub.docker.com/u/collabora
 
 ## Logs
 
 ### Bug Fixes
 
-
 * 2020-08-14  change pip install docker to yum install docker
 * 2020-07-31  add soft link in TASK [role_docker : Install Docker Compose] to correct error "/bin/sh: docker-compose: not found" in CentOS of Azure, AmazonLinux
-* 2020-05-15  Portainer 默认端口修改为9000，避免与MySQL容器端口冲突
-* 2020-03-29  弃用所有ansible docker模块，直接使用Docker命令
-* 2020-02-14  修复Docker应用重试安装报错的问题
+* 2020-05-15  Portainer port set to 9000
+* 2020-03-29  Give up ansible docker module, use docker cli to replace it
 
 ### Features
 
+* 2020-09-19  optimize application installation by apply application template
 * 2020-09-16  add create a new network named apps
-* 2020-03-14  增加常用的基于Docker的应用安装项，包括：Portainer, phpMyAdmin, phpPgAdmin, onlyofficedocumentserver, AdminMongo等  
+* 2020-03-14  add application：Portainer, phpMyAdmin, phpPgAdmin, onlyofficedocumentserver, AdminMongo
