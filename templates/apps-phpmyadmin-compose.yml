@@ -10,9 +10,9 @@ services:
       ports:
        - {{docker_apps_phpmyadmin_port}}:80
       volumes:
-       - /data/apps/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+       - "{{docker_apps_dir}}/{{docker_appname}}/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php"
 
 networks:
   default:
     external:
-      name: apps
+      name: "{{docker_addnetwork}}"

@@ -6,9 +6,9 @@ services:
     container_name: onlyofficedocumentserver
     image: onlyoffice/documentserver:latest
     volumes:
-      - /data/apps/onlyofficedocumentserver/logs:/var/log/onlyoffice
-      - /data/apps/onlyofficedocumentserver/data:/var/www/onlyoffice/Data
-      - /data/apps/onlyofficedocumentserver/postgresql:/var/lib/postgresql
+      - "{{docker_apps_dir}}/{{docker_appname}}/logs:/var/log/onlyoffice"
+      - "{{docker_apps_dir}}/{{docker_appname}}/data:/var/www/onlyoffice/Data"
+      - "{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"
     stdin_open: true
     restart: always
     ports:
@@ -17,4 +17,4 @@ services:
 networks:
   default:
     external:
-      name: apps
+      name: "{{docker_addnetwork}}"

@@ -10,10 +10,10 @@ services:
     ports:
       - {{docker_apps_portainer_port}}:9000
     volumes:
-      - /data/apps/portainer/portainer_data:/data
+      - "{{docker_apps_dir}}/{{docker_appname}}/portainer_data:/data"
       - /var/run/docker.sock:/var/run/docker.sock
       
 networks:
   default:
     external:
-      name: apps
+      name: "{{docker_addnetwork}}"

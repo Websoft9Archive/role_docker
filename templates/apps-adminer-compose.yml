@@ -14,4 +14,4 @@ services:
 networks:
   default:
     external:
-      name: apps
+      name: "{{docker_addnetwork}}"
