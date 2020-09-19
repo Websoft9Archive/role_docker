@@ -3,6 +3,7 @@ services:
   phppgadmin:
     restart: always
     image: dockage/phppgadmin
+    container_name: "{{docker_appname}}"
     ports:
       - "{{docker_apps_phppgadmin_port}}:80"
     environment:
