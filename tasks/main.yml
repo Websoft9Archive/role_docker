@@ -31,9 +31,7 @@
 - name: Check Docker Version
   shell: sudo sh -c "docker -v 1>> /data/logs/install_version.txt"
 
-# Docker application installation
-
 - name: Install Docker applications
-  include_tasks: apps_{{item}}.yml
+  include: apps.yml docker_appname="{{item}}"
   with_items: "{{docker_applications}}"
   when: docker_applications is not none and docker_applications != ""
