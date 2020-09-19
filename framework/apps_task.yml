@@ -1,33 +1,20 @@
-# This framework is for apps_name.yml development in task directory, e.g apps_portainer.yml
-# 1 create directory
-# 2 copy docker-compose.yml file
-# 3 docker-compose up -d
-# 4 create symbolic link
+# refer to url: 
 
-- name: Create /data/appname directory
-  file:
-    path: /data/apps/appname
-    state: directory
-    owner: docker
-    group: docker
-    mode: 0750
-
-- name: copy docker-compose.yml to appname dir
-  template:
-    src: apps_appname_compose.yml
-    dest: /data/apps/appname/docker-compose.yml
- 
-- name: docker-compose up
-  shell:
-    docker-compose up -d
-  args:
-    chdir: /data/apps/appname
-    
-- name: Create symbolic links
-  file:
-    src: '{{item.src}}'
-    dest: '{{item.dest}}'
-    state: link
-  with_items:
-    - {src: /data/apps/appname/docker-compose.yml,dest: /data/config/apps_appname_compose.yml}
-    - {src: /data/apps/appname,dest: /data/wwwroot}
+version: '3'
+services:
+  onlyoffice-documentserver:
+    container_name: "{{docker_appname}}"
+    image: onlyoffice/documentserver:latest
+    volumes:
+      - "{{docker_apps_dir}}/{{docker_appname}}/logs:/var/log/onlyoffice"
+      - "{{docker_apps_dir}}/{{docker_appname}}/data:/var/www/onlyoffice/Data"
+      - "{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"
+    stdin_open: true
+    restart: always
+    ports:
+      - "{{docker_apps_onlyofficedocumentserver_port}}:80"
+      
+networks:
+  default:
+    external:
+      name: "{{docker_addnetwork}}"
