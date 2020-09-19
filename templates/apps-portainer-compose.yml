@@ -4,8 +4,8 @@ version: '2.0'
 
 services:
   portainer:
-    container_name: portainer
     image: portainer/portainer:latest
+    container_name: "{{docker_appname}}"
     restart: always
     ports:
       - {{docker_apps_portainer_port}}:9000
