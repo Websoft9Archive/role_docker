@@ -11,7 +11,7 @@
     
 - name: copy docker-compose.yml
   template:
-    src: apps_{{docker_appname}}_compose.yml
+    src: apps-{{docker_appname}}-compose.yml
     dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
  
 - name: Run docker-compose
