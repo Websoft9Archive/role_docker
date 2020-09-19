@@ -3,7 +3,7 @@
 version: '3'
 services:
   onlyoffice-documentserver:
-    container_name: onlyofficedocumentserver
+    container_name: "{{docker_appname}}"
     image: onlyoffice/documentserver:latest
     volumes:
       - "{{docker_apps_dir}}/{{docker_appname}}/logs:/var/log/onlyoffice"
