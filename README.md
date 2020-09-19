@@ -71,6 +71,12 @@ docker_apps_dir: "/data/apps"
   
 ```
 
+## License
+
+[LGPL-3.0](/License.md), Additional Terms: It is not allowed to publish free or paid image based on this repository in any Cloud platform's Marketplace.
+
+Copyright (c) 2016-present, Websoft9
+
 ## FAQ
 
 #### Why did this project not use ansible's docker module?
