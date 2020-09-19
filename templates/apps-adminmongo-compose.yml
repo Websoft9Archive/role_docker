@@ -2,7 +2,7 @@ version: "2.2"
 services:
   phpmyadmin:
       image: mrvautin/adminmongo
-      container_name: adminmongo
+      container_name: "{{docker_appname}}"
       environment:
        - PORT=1234
        - local=en
