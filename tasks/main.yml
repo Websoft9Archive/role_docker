@@ -33,5 +33,5 @@
 
 - name: Install Docker applications
   include: apps.yml docker_appname="{{item}}"
-  with_items: "{{docker_applications}}"
+  loop: "{{docker_applications}}"
   when: docker_applications is not none and docker_applications != ""
