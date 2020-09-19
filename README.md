@@ -1,7 +1,7 @@
 Ansible Role: Docker
 =========
 
-This role is for you to install Docker, Docker-Compose and some popular docker applications.  
+This role is for you to install **Docker**, **Docker-Compose** and **some popular docker applications**.  
 
 The applications includes:
 
@@ -13,7 +13,7 @@ The applications includes:
 * phpPgAdmin - GUI tool for PostgreSQL
 * Portainer - GUI tool for Docker
 
-If you want this role to support more applications, you can submit Issues for us.
+If you want this role to support more applications, you can [**submit Issues**](https://github.com/websoft9dev/role_docker/issues/new/choose) for us.
 
 ## Requirements
 
