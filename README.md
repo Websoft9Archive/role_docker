@@ -1,64 +1,78 @@
 Ansible Role: Docker
 =========
 
-本 Role 用于在PHP运行环境下安装 [Docker](https://www.docker.com/)，以及安装常用的基于Docker的应用。
+This role is for you to install Docker, Docker-Compose and some popular docker applications.  
+
+The applications includes:
+
+* adminMongo - GUI tool for MongoDB
+* Adminer - GUI tools for major DB
+* Mongo-Express - GUI tool for MongoDB
+* OnlyOffice Document Server - Office view and edit online middleware
+* phpMyAdmin - GUI tool for MySQL
+* phpPgAdmin - GUI tool for PostgreSQL
+* Portainer - GUI tool for Docker
+
+If you want this role to support more applications, you can submit Issues for us.
 
 ## Requirements
 
-运行本 Role，请确认符合如下的必要条件：
+Make sure these requirements need before the installation:
 
 | **Items**      | **Details** |
 | ------------------| ------------------|
 | Operating system | CentOS7.x Ubuntu18.04 |
-| Python 版本 | Python2  |
-| Python 组件 |  requests, docker-compose  |
-| Runtime |  |
+| Python version | Python2  |
+| Python components |  requests, docker-compose  |
+| Runtime | No |
 
-注意： 
-1. requests 需要更新为最新版本，否则 Docker API 无法使用(ansible docker 是通过 Docker API 管理 Docker)。
-2. Ansible的Docker模块需要安装docker-compose方可使用，而docker-compose针对于Python2 or Python3 兼容性是难以控制，尽量少用Ansible的Docker模块
+Note: 
 
+1. python's requests need a suitable verion, otherwise Docker API may not available (ansible docker is based on Docker API).
+2. Ansible Docker need to install docker-compose, but docker-compose have compatibility problem on Python2 or Python3, so this repository is not use ansible docker.
 
 ## Related roles
 
-本 Role 在语法不依赖其他 role 的变量，但程序运行时需要确保已经运行： common。例子如下：
+This Role does not depend on other role variables in syntax, but it depend on other role before:
 
 ```
-  roles:
-    - { role: role_common }
-    - { role：role_docker }
+roles:
+  - { role: role_common }
+  - { role：role_docker }
 ```
 
 
 ## Variables
 
-本 Role 主要变量以及使用方法如下：
+The main variables of this Role and how to use them are as follows:
 
-| **Items**      | **Details** | **Format**  | **是否初始化** |
+| **Items**      | **Details** | **Format**  | **Need to assignment** |
 | ------------------| ------------------|-----|-----|
-| docker_applications | - adminmongo - onlyofficedocumentserver... | 队列 | 否 |
+| docker_applications |install docker applications, e.g - adminmongo - onlyofficedocumentserver... | List | No |
+| docker_addnetwork | add new network for docker, e.g "apps" | String| No |
+| docker_apps_dir:  | set the applications's directory, e.g "/data/apps" | String | No |
 
-注意： 
-1. docker_applications：用于额外安装基于Docker的应用，例如：phpMyAdmin,phpPgAadmin,Potainer等
+Note: 
+
+1. docker_applications is used to install more than two applications
 
 ## Example
 
 ```
-- name: MySQL
-  hosts: all
-  become: yes
-  become_method: sudo 
-  vars_files:
-    - vars/main.yml 
+docker_applications
+  - phpmyadmin
+  - adminmongo
+  - onlyofficedocumentserver
 
-  roles:
-   - {role: role_common, tags: "role_common"}   
-   - {role: role_cloud, tags: "role_cloud"}
-   - {role: role_docker, tags: "role_docker"}
+docker_applications
+  - phpmyadmin
+  
+docker_apps_dir: "/data/apps"
+  
 ```
 
 ## FAQ
 
-#### 为什么本项目没有使用ansible的docker模块？
+#### Why did this project not use ansible's docker module?
 
-Ansible Docker模块采用API与Docker通信，容易出错，因此启用此模块，直接使用Docker命令更稳定可靠，且熟悉Docker命令即可，无需掌握 Ansible 此模块的使用
+The Ansible Docker module uses API to communicate with Docker, which is prone to errors. Therefore, enabling this module and directly using Docker commands are more stable and reliable, and you can be familiar with Docker commands. You don’t need to master the use of Ansible.
