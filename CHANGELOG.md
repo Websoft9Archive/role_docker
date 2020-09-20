@@ -10,6 +10,7 @@
 
 ### Bug Fixes
 
+* 2020-09-20  variable docker-applications definde [] replace ''
 * 2020-08-14  change pip install docker to yum install docker
 * 2020-07-31  add soft link in TASK [role_docker : Install Docker Compose] to correct error "/bin/sh: docker-compose: not found" in CentOS of Azure, AmazonLinux
 * 2020-05-15  Portainer port set to 9000
