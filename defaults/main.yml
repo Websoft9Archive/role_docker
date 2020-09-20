@@ -10,7 +10,9 @@ docker_region: 0
 #  - phppgadmin
 #  - portainer
 
-docker_applications: ''
+# This is must define a list variable
+docker_applications: []
+
 docker_addnetwork: "apps"
 
 docker_apps_adminer_port: 9092
