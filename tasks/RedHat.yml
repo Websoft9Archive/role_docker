@@ -10,6 +10,7 @@
   
 - name: Update release server
   shell: sudo sed -i "s/$releasever/7/g" /etc/yum.repos.d/docker-ce.repo
+  when: ansible_distribution == 'Amazon'
 
 - name: Install Docker on {{ansible_distribution}}
   yum:
