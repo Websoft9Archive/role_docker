@@ -9,13 +9,10 @@
   shell: wget -O /etc/yum.repos.d/docker-ce.repo {{docker_repository_url}}
   
 - name: Update release server
-  shell: sudo sed -i "s/system-release/centos-release/g" /etc/yum.conf
+  shell: sudo sed -i "s/$releasever/7/g" /etc/yum.repos.d/docker-ce.repo
 
 - name: Install Docker on {{ansible_distribution}}
   yum:
     name: [docker-ce,docker-ce-cli,containerd.io]
     update_cache: yes
     state: latest
-
-- name: Update release server
-  shell: sudo sed -i "s/centos-release/system-release/g" /etc/yum.conf
