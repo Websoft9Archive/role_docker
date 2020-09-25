@@ -16,3 +16,6 @@
     name: [docker-ce,docker-ce-cli,containerd.io]
     update_cache: yes
     state: latest
+
+- name: Update release server
+  shell: sudo sed -i "s/centos-release/system-release/g" /etc/yum.conf
