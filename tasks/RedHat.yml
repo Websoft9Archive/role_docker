@@ -7,6 +7,9 @@
 
 - name: Add Docker repository
   shell: wget -O /etc/yum.repos.d/docker-ce.repo {{docker_repository_url}}
+  
+- name: Update release server
+  shell: sudo sed -i "s/system-release/centos-release/g" /etc/yum.conf
 
 - name: Install Docker on {{ansible_distribution}}
   yum:
