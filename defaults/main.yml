@@ -15,13 +15,22 @@ docker_applications: []
 
 docker_addnetwork: "apps"
 
+# db tools 909*
 docker_apps_adminer_port: 9092
 docker_apps_adminmongo_port: 9091
 docker_apps_mongoexpress_port: 9091
 docker_apps_phpmyadmin_port: 9090
 docker_apps_phppgadmin_port: 9090
+
+# develop tools 901*
+docker_apps_codiad_port: 9010
+docker_apps_vscode_port: 9011
+
+# other tools 900*
 docker_apps_portainer_port: 9000
 docker_apps_onlyofficedocumentserver_port: 9002
+
+
 
 docker_apps_dir: "/data/apps"
 # refer to: https://github.com/docker/compose/releases/
