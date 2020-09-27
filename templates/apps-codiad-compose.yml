@@ -1,0 +1,22 @@
+# refer to: https://hub.docker.com/r/linuxserver/codiad
+# PUID/PGID must reset by user
+
+version: "2.0"
+services:
+  codiad:
+      image: linuxserver/codiad
+      container_name: "{{docker_appname}}"
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=Europe/London
+      restart: always
+      volumes:
+        - "{{docker_apps_dir}}/{{docker_appname}}:/config"
+      ports:
+       - {{docker_apps_codiad_port}}:80
+
+networks:
+  default:
+    external:
+      name: "{{docker_addnetwork}}"
