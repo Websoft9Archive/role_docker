@@ -19,6 +19,7 @@
 
 ### Features
 
+* 2020-09-27  add application Codiad
 * 2020-09-19  optimize application installation by apply application template
 * 2020-09-16  add create a new network named apps
 * 2020-03-14  add application：Portainer, phpMyAdmin, phpPgAdmin, onlyofficedocumentserver, AdminMongo
