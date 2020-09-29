@@ -8,7 +8,7 @@ services:
     volumes:
       - "{{docker_apps_dir}}/{{docker_appname}}/logs:/var/log/onlyoffice"
       - "{{docker_apps_dir}}/{{docker_appname}}/data:/var/www/onlyoffice/Data"
-      - "{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"
+ #     - "{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"
       - "{{docker_apps_dir}}/{{docker_appname}}/fonts:/usr/share/fonts/truetype/custom"
       - "{{docker_apps_dir}}/{{docker_appname}}/forgotten:/var/lib/onlyoffice/documentserver/App_Data/cache/files/forgotten"
     stdin_open: true
