@@ -16,13 +16,17 @@
     owner: docker
     group: docker
     recurse: true
-    
+
 - name: Get Docker UID to fix file permission issue
   shell: sudo id docker -u
-  register: docker_uid
-  
+  register: docker_uid_json
+    
+- name: Convert variable
+  set_fact:
+    docker_uid: "{{docker_uid_json.stdout}}"
+    
 - debug:
-    var: docker_uid.stdout
+    var: docker_uid
     
 - name: copy docker-compose.yml
   template:
