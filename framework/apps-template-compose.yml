@@ -12,7 +12,7 @@ services:
       - "{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"
     stdin_open: true
     tty: true
-    user: "0:0"
+    user: "1000:1000"
     expose:
       - '80'
       - '443'
