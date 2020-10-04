@@ -34,7 +34,7 @@
     dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
  
 - name: Run docker-compose and add exra user permission
-  shell:
+  shell: |
     docker-compose up -d
     "setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}"
   args:
