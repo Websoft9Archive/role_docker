@@ -1,0 +1,18 @@
+  
+# refer to: https://hub.docker.com/r/codercom/code-server
+
+version: "2.0"
+services:
+  codeserver:
+      image: codercom/code-server
+      container_name: "{{docker_appname}}"
+      user: "{{docker_uid}}:{{docker_uid}}"
+      restart: always
+      ports:
+        - {{docker_apps_codeserver_port}}:8080
+      volumes:
+        - "{{docker_apps_dir}}/{{docker_appname}}/project:/home/coder/project"
+networks:
+  default:
+    external:
+      name: "{{docker_addnetwork}}"
