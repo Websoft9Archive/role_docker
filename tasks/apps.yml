@@ -36,8 +36,8 @@
 - name: Run docker-compose and add exra user permission
   shell: |
     docker-compose up -d
-    sleep 20s
-    "setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}"
+    sleep 30s
+    setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}
   args:
     chdir: "{{docker_apps_dir}}/{{docker_appname}}"
     
