@@ -17,6 +17,13 @@
     group: docker
     recurse: true
     
+- name: Get Docker UID to fix file permission issue
+  shell: sudo id docker -u
+  register: docker_uid
+  
+- debug:
+    var: docker_uid.stdout
+    
 - name: copy docker-compose.yml
   template:
     src: apps-{{docker_appname}}-compose.yml
