@@ -33,9 +33,10 @@
     src: apps-{{docker_appname}}-compose.yml
     dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
  
-- name: Run docker-compose
+- name: Run docker-compose and add exra user permission
   shell:
     docker-compose up -d
+    "setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}"
   args:
     chdir: "{{docker_apps_dir}}/{{docker_appname}}"
     
