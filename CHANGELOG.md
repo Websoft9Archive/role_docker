@@ -11,6 +11,7 @@
 
 ### Bug Fixes
 
+* 2020-10-04  add user: "1000:1000" for docker-compose template file that can fix the user permission for container
 * 2020-09-29  onlyoffice volumes postgresql no permission,delete the volumes ["{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"]
 * 2020-09-20  variable docker-applications definde [] replace ''
 * 2020-08-14  change pip install docker to yum install docker
