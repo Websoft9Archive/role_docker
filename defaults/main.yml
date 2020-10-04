@@ -5,6 +5,7 @@ docker_region: 0
 #  - adminmongo
 #  - adminer
 #  - codiad
+#  - codeserver
 #  - mongoexpress
 #  - onlyofficedocumentserver
 #  - phpmyadmin
@@ -25,7 +26,7 @@ docker_apps_phppgadmin_port: 9090
 
 # develop tools 901*
 docker_apps_codiad_port: 9010
-docker_apps_vscode_port: 9011
+docker_apps_codeserver_port: 9011
 
 # other tools 900*
 docker_apps_portainer_port: 9000
