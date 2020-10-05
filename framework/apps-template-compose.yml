@@ -12,6 +12,7 @@ services:
       - "{{docker_apps_dir}}/{{docker_appname}}/postgresql:/var/lib/postgresql"
     stdin_open: true
     tty: true
+    #network_mode: host
     user: "{{docker_uid.stdout}}:{{docker_uid.stdout}}"
     expose:
       - '80'
