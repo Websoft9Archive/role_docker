@@ -1,17 +1,24 @@
   
-# refer to: https://hub.docker.com/r/codercom/code-server
+# linuxserver/code-server is more suitable for Coder who is official image
+# refer to: https://hub.docker.com/r/linuxserver/code-server
 
-version: "2.0"
+version: "2.1"
 services:
   codeserver:
-      image: codercom/code-server
+      image: linuxserver/code-server
       container_name: "{{docker_appname}}"
-      user: "{{docker_uid}}:{{docker_uid}}"
+      environment:
+        - PUID={{docker_uid}}
+        - PGID={{docker_uid}}
+        - PASSWORD=123456 #optional
+        - SUDO_PASSWORD=123456 #optional
+        - PROXY_DOMAIN=code-server.my.domain #optional
       restart: always
+      network_mode: host
       ports:
-        - {{docker_apps_codeserver_port}}:8080
+        - {{docker_apps_codeserver_port}}:8443
       volumes:
-        - "{{docker_apps_dir}}/{{docker_appname}}/project:/home/coder/project"
+        - "{{docker_apps_dir}}/{{docker_appname}}/config:/config"
 networks:
   default:
     external:
