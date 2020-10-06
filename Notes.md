@@ -15,4 +15,8 @@ Docker 支持大部分操作系统上安装，参考官方[安装文档](https:/
 
 针对于应用，当前采用模式化安装方案+compose.yml的方式
 
+## Linuxserver/code-server 比官方镜像更合适
+参考：https://hub.docker.com/r/linuxserver/code-server
+优点：方便改密码，默认安装 Node, Yarn
+
 
