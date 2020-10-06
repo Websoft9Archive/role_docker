@@ -15,6 +15,8 @@ services:
         - SUDO_PASSWORD=123456 #optional
         - PROXY_DOMAIN=code-server.my.domain #optional
       restart: always
+      stdin_open: true
+      tty: true
       network_mode: host
       ports:
         - {{docker_apps_codeserver_port}}:8443
