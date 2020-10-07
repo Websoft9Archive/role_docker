@@ -6,6 +6,7 @@
 2. Fix mongoexpress Authorization Required
 3. add https://hub.docker.com/u/collabora
 4. codiad/code-server have file permission issues
+5. add all containers status in handler
 
 ## Logs
 
