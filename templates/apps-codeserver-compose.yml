@@ -12,8 +12,8 @@ services:
         - PUID={{docker_uid}}
         - PGID={{docker_uid}}
         - PASSWORD=123456 #optional
-        - SUDO_PASSWORD=123456 #optional
-        - PROXY_DOMAIN=code-server.my.domain #optional
+        #- SUDO_PASSWORD=123456 #optional
+        #- PROXY_DOMAIN=code-server.my.domain #optional
       restart: always
       stdin_open: true
       tty: true
