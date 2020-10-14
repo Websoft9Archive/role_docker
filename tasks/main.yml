@@ -37,3 +37,6 @@
   loop_control:
     loop_var: docker_applications_item
   when: docker_applications is defined and docker_applications is not none and docker_applications != ""
+  register: check_{{docker_appname}}_service
+  notify: check_{{docker_appname}}_service
+  
