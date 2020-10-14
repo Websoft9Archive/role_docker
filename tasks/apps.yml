@@ -52,6 +52,6 @@
 
 - name:  Check {{docker_appname}} service
   shell: echo "{{docker_appname}}  status:" | tr -t '\n' ' ' ; docker inspect {{docker_appname}} |grep -i status |awk -F '"' '{print $4}'
-  regist: check_{{docker_appname}}_service
-  notify: check_{{docker_appname}}_service
+  regist: check_dockerapp_service
+  notify: check_dockerapp_service
 
