@@ -1,1 +1,3 @@
-
+- name:  check_{{docker_appname}}_service
+  debug:
+    var:  check_{{docker_appname}}_service.stdout
