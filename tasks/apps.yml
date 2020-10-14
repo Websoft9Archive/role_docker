@@ -49,3 +49,9 @@
   with_items:
     - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
     - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
+
+- name:  Check {{docker_appname}} service
+  shell: docker inspect {{docker_appname}} |grep -i status |awk -F '"' '{print $4}'
+  regist: check_{{docker_appname}}_service
+  notify: check_{{docker_appname}}_service
+
