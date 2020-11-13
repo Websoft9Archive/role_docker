@@ -1,27 +1,31 @@
+#! /bin/bash 
 {% if {{docker_appname}} == adminmongo %}
-
+sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/bash -c 'cat /app/user/package.json | grep version | awk -F '"' '{print $4}'') |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == adminer %}
-
+sudo echo "{{docker_appname}}_version:" $(cat /var/www/html/admin.php | grep @version) |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == codiad %}
-
+sudo echo "{{docker_appname}}_version:" $(cat /version.txt) |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == codeserver %}
-
+sudo echo "{{docker_appname}}_version:" $(code-server --version) |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == mongoexpress %}
-
+sudo echo "{{docker_appname}}_version:" $() |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == onlyofficedocumentserver %}
-
+sudo echo "{{docker_appname}}_version:" $(cat /var/www/onlyoffice/documentserver/web-apps/apps/spreadsheeteditor/main/app.js | sed -n 6p) |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == phpmyadmin %}
-
+sudo echo "{{docker_appname}}_version:" $(cat /app/user/package.json | grep version | awk -F '"' '{print $4}') |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == phppgadmin %}
-
+sudo echo "{{docker_appname}}_version:" $() |sudo tee -a /data/logs/install_version.txt
 {% endif %}
 {% if {{docker_appname}} == portainer %}
-
+sudo echo "{{docker_appname}}_version:" $(cat /app/user/package.json | grep version | awk -F '"' '{print $4}') |sudo tee -a /data/logs/install_version.txt
 {% endif %}
+
+
+
