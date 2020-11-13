@@ -50,3 +50,11 @@
     - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
     - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
 
+- name: copy script files to remote
+  copy: src=check_dockerapp_version.sh.j2 dest=/tmp/check_dockerapp_version.sh
+
+- name: Check dockerapp service
+  shell: bash /tmp/check_dockerapp_version.sh
+  register: check_dockerapp_version
+  notify: check_dockerapp_version
+
