@@ -1,4 +1,3 @@
-#! /bin/bash 
 {% if {{docker_appname}} == adminmongo %}
 sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /app/user/package.json | grep version') |sudo tee -a /data/logs/install_version.txt
 {% endif %}
