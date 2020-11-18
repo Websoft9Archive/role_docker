@@ -2,3 +2,7 @@
 - name:  check_dockerapp_service
   debug:
     var: check_dockerapp_service.stdout_lines
+    
+- name:  check_dockerapp_version
+  debug:
+    var: check_dockerapp_version.stdout_lines
