@@ -55,6 +55,4 @@
 
 - name: Check dockerapp version
   shell: bash /tmp/check_dockerapp_version.sh
-  register: check_dockerapp_version
-  notify: check_dockerapp_version
 
