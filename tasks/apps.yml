@@ -53,7 +53,7 @@
 - name: copy script files to remote
   template: src=check_dockerapp_version.sh dest=/tmp/check_dockerapp_version.sh
 
-- name: Check dockerapp service
+- name: Check dockerapp version
   shell: bash /tmp/check_dockerapp_version.sh
   register: check_dockerapp_version
   notify: check_dockerapp_version
