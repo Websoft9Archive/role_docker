@@ -13,7 +13,7 @@ services:
       volumes:
        - "{{docker_apps_dir}}/{{docker_appname}}/config:/config"
       environment:
-        APP_COMMON_DOCKER_VERSION: docker exec -it {{docker_appname}} /bin/sh -c 'cat /app/user/package.json | grep version'
+        APP_COMMON_DOCKER_VERSION: docker exec -it {{docker_appname}} sh -c 'cat /app/user/package.json | grep version'
 
 networks:
   default:

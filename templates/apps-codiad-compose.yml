@@ -16,7 +16,7 @@ services:
       ports:
        - {{docker_apps_codiad_port}}:80
       environment:
-        APP_COMMON_DOCKER_VERSION: docker exec -it {{docker_appname}} /bin/sh -c 'cat /version.txt'
+        APP_COMMON_DOCKER_VERSION: docker exec -it {{docker_appname}} sh -c 'cat /version.txt'
 
 networks:
   default:
