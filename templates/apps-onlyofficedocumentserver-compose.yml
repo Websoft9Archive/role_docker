@@ -14,6 +14,8 @@ services:
     restart: always
     ports:
       - "{{docker_apps_onlyofficedocumentserver_port}}:80"
+    environment:
+      APP_COMMON_DOCKER_VERSION: docker exec -it {{docker_appname}} sh -c 'cat /var/www/onlyoffice/documentserver/web-apps/apps/spreadsheeteditor/main/app.js | sed -n 6p'
       
 networks:
   default:

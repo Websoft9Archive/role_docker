@@ -21,6 +21,9 @@ services:
         - {{docker_apps_codeserver_port}}:8443
       volumes:
         - "{{docker_apps_dir}}/{{docker_appname}}/config:/config"
+      environment:
+        APP_COMMON_DOCKER_VERSION: docker exec -it {{docker_appname}} sh -c 'code-server --version'
+
 networks:
   default:
     external:

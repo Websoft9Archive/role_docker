@@ -14,6 +14,8 @@ services:
       restart: always
       ports:
        - {{docker_apps_mongoexpress_port}}:8081
+      environment:
+        APP_COMMON_DOCKER_VERSION: echo "no method get version"
 
 networks:
   default:
