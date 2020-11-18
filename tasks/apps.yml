@@ -51,7 +51,7 @@
     - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
 
 - name: copy script files to remote
-  copy: src=check_dockerapp_version.sh dest=/tmp/check_dockerapp_version.sh
+  template: src=check_dockerapp_version.sh dest=/tmp/check_dockerapp_version.sh
 
 - name: Check dockerapp service
   shell: bash /tmp/check_dockerapp_version.sh
