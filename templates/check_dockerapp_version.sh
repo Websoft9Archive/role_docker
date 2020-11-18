@@ -10,6 +10,6 @@ sudo echo "{{docker_appname}}_version: $(check_dockerapp_version_cmd)" |sudo tee
 sed -i '/APP_COMMON_DOCKER_VERSION/d' $docker_compose_file_url
 sed  -i 'N;/\n.*APP_COMMON_DOCKER_VERSION/!P;D'  $docker_compose_file_url
 
-rm $0
+
 
 
