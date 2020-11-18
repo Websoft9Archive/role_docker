@@ -39,10 +39,10 @@
   when: docker_applications is defined and docker_applications is not none and docker_applications != ""
   
 - name: copy check_dockerapp_serveice script
-  copy: src=check_dockerapp_service.sh dest=/root/check_dockerapp_service.sh
+  copy: src=check_dockerapp_service.sh dest=/tmp/check_dockerapp_service.sh
 
 - name: Check dockerapp service
-  shell: bash /root/check_dockerapp_service.sh
+  shell: bash /tmp/check_dockerapp_service.sh
   register: check_dockerapp_service
   notify: check_dockerapp_service
   
