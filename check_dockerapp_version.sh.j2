@@ -1,33 +1,8 @@
+#! /bin/bash
+# get check dockerapp version command
 check_docker_version_cmd=$(cat /data/wwwroot/{{docker_appname}}/docker-compose.yml |grep APP_COMMON_DOCKER_VERSION |cut -d ":" -f 2)
+
+# check dockerapp version
 sudo echo "{{docker_appname}}_version:" $(check_docker_version_cmd) |sudo tee -a /data/logs/install_version.txt
-
-{% if {{docker_appname}} == adminmongo %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /app/user/package.json | grep version') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == adminer %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /var/www/html/admin.php | grep @version') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == codiad %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /version.txt') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == codeserver %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'code-server --version') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == mongoexpress %}
-sudo echo "{{docker_appname}}_version: no method get version"  |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == onlyofficedocumentserver %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /var/www/onlyoffice/documentserver/web-apps/apps/spreadsheeteditor/main/app.js | sed -n 6p') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == phpmyadmin %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /app/user/package.json | grep version') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == phppgadmin %}
-sudo echo "{{docker_appname}}_version:" $(docker exec -it phppgadmin /bin/sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1') |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-{% if {{docker_appname}} == portainer %}
-sudo echo "{{docker_appname}}_version: no method get version" |sudo tee -a /data/logs/install_version.txt
-{% endif %}
-
 
 

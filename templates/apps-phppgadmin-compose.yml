@@ -9,7 +9,9 @@ services:
     environment:
       - PHP_PG_ADMIN_SERVER_DESC=PostgreSQL
       - PHP_PG_ADMIN_SERVER_HOST={{docker_gateway.stdout}}
-      
+    environment:
+      APP_COMMON_DOCKER_VERSION: docker exec -it phppgadmin /bin/sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'
+
 networks:
   default:
     external:
