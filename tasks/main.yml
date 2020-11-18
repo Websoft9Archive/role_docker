@@ -38,7 +38,7 @@
     loop_var: docker_applications_item
   when: docker_applications is defined and docker_applications is not none and docker_applications != ""
   
-- name: copy script files to remote
+- name: copy check_dockerapp_serveice script
   copy: src=check_dockerapp_service.sh dest=/root/check_dockerapp_service.sh
 
 - name: Check dockerapp service
