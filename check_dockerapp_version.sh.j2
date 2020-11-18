@@ -1,3 +1,6 @@
+check_docker_version_cmd=$(cat /data/wwwroot/{{docker_appname}}/docker-compose.yml |grep APP_COMMON_DOCKER_VERSION |cut -d ":" -f 2)
+sudo echo "{{docker_appname}}_version:" $(check_docker_version_cmd) |sudo tee -a /data/logs/install_version.txt
+
 {% if {{docker_appname}} == adminmongo %}
 sudo echo "{{docker_appname}}_version:" $(docker exec -it {{docker_appname}} /bin/sh -c 'cat /app/user/package.json | grep version') |sudo tee -a /data/logs/install_version.txt
 {% endif %}
