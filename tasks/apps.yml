@@ -55,4 +55,5 @@
 
 - name: Check dockerapp version
   shell: bash /tmp/check_dockerapp_version.sh
+  failed_when: false
 
