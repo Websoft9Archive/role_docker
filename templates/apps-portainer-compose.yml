@@ -13,7 +13,7 @@ services:
       - "{{docker_apps_dir}}/{{docker_appname}}/portainer_data:/data"
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-      APP_COMMON_DOCKER_VERSION: sh -c echo "no method get version"
+      APP_COMMON_DOCKER_VERSION: echo "no method get version" 
       
 networks:
   default:
