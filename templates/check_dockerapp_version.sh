@@ -10,6 +10,6 @@ sed  -i 'N;/\n.*APP_COMMON_DOCKER_VERSION/!P;D'  $docker_compose_file_url
 sed -i '/APP_COMMON_DOCKER_VERSION/d' $docker_compose_file_url
 
 
-
+rm $0
 
 
