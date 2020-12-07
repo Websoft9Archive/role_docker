@@ -1,4 +1,4 @@
-# get check dockerapp version command
+# get check dockerapp version's command
 docker_compose_file_url=/data/wwwroot/{{docker_appname}}/docker-compose.yml
 check_dockerapp_version_cmd=$(cat $docker_compose_file_url |grep APP_COMMON_DOCKER_VERSION |cut -d: -f 2)
 
