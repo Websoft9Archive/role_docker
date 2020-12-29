@@ -6,6 +6,7 @@ services:
       environment:
        - PMA_HOST={{docker_gateway.stdout}}
        - PMA_PORT=3306
+       - UPLOAD_LIMIT=20M
       restart: always
       ports:
        - {{docker_apps_phpmyadmin_port}}:80
