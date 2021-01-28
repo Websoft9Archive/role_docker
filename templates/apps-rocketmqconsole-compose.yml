@@ -1,0 +1,18 @@
+# this comopose file can be running
+
+version: '2.2'
+
+services:
+  rocketmqconsole:
+    image: rocketmq-console:2.0.0
+    container_name: "{{docker_appname}}"
+    environment:
+     - JAVA_OPTS=-Drocketmq.namesrv.addr={{docker_gateway.stdout}}:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false
+    restart: always
+    ports:
+      - {{docker_apps_rocketmqconsole_port}}:9876    
+      
+networks:
+  default:
+    external:
+      name: "{{docker_addnetwork}}"
