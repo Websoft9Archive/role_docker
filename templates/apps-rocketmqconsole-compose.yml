@@ -4,7 +4,7 @@ version: '2.2'
 
 services:
   rocketmqconsole:
-    image: rocketmq-console:2.0.0
+    image: apacherocketmq/rocketmq-console:2.0.0
     container_name: "{{docker_appname}}"
     environment:
      - JAVA_OPTS=-Drocketmq.namesrv.addr={{docker_gateway.stdout}}:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false
