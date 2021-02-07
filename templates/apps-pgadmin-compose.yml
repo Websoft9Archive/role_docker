@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  phppgadmin:
+    restart: always
+    image: dpage/pgadmin4
+    container_name: "{{docker_appname}}"
+    ports:
+      - "9090:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=user@domain.com
+      - PGADMIN_DEFAULT_PASSWORD=SuperSecret
+      - PGADMIN_LISTEN_ADDRESS=0.0.0.0
+
+networks:
+  default:
+    external:
+      name: "{{docker_addnetwork}}"
