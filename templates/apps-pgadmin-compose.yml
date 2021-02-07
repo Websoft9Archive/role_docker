@@ -5,7 +5,7 @@ services:
     image: dpage/pgadmin4
     container_name: "{{docker_appname}}"
     ports:
-      - "9090:80"
+      - "{{docker_apps_pgadmin_port}}:80"
     environment:
       - PGADMIN_DEFAULT_EMAIL=user@domain.com
       - PGADMIN_DEFAULT_PASSWORD=SuperSecret
