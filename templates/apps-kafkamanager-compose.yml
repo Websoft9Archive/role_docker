@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  kafka_manager:
+    image: hlebalbau/kafka-manager:latest
+    container_name: "{{docker_appname}}"
+    ports:
+      - "{{docker_apps_kafkamanager_port}}:9000"
+    environment:
+      ZK_HOSTS: "zoo:2181"
+      APPLICATION_SECRET: "random-secret"
+
+networks:
+  default:
+    external:
+      name: "{{docker_addnetwork}}"
