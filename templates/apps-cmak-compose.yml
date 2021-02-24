@@ -1,5 +1,6 @@
 # CMAK is a tool for managing Apache Kafka clusters
-# https://github.com/yahoo/CMAK
+# repository: https://github.com/yahoo/CMAK
+# image: https://hub.docker.com/r/hlebalbau/kafka-manager
 
 version: '3.6'
 services:
