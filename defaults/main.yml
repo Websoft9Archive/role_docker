@@ -5,12 +5,15 @@ docker_region: 0
 #  - adminmongo
 #  - adminer
 #  - codiad
+#  - cmak
 #  - codeserver
 #  - mongoexpress
 #  - onlyofficedocumentserver
 #  - phpmyadmin
 #  - phppgadmin
+#  - pgadmin
 #  - portainer
+#  - rocketmqconsole
 
 # This is must define a list variable
 docker_applications: []
@@ -33,7 +36,7 @@ docker_apps_codeserver_port: 9011
 docker_apps_portainer_port: 9000
 docker_apps_onlyofficedocumentserver_port: 9002
 docker_apps_rocketmqconsole_port: 9004
-docker_apps_kafkamanager_port: 9005
+docker_apps_cmak_port: 9005
 
 docker_apps_dir: "/data/apps"
 # refer to: https://github.com/docker/compose/releases/
