@@ -10,8 +10,12 @@ services:
     ports:
       - "{{docker_apps_cmak_port}}:9000"
     environment:
-      ZK_HOSTS: "zoo:2181"
+      ZK_HOSTS: "{{docker_gateway.stdout}}:2181"
       APPLICATION_SECRET: "random-secret"
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: admin 
+      KAFKA_MANAGER_PASSWORD: 123456
+
 
 networks:
   default:
