@@ -1,1 +1,6 @@
-
+docker_apps_commands: 
+  "adminer": 
+  "adminmongo": 
+  "mongoexpress": 
+  "phpmyadmin": 
+  "phppgadmin": 
