@@ -1,7 +1,14 @@
 docker_apps_commands: 
-  "adminer": 
-  "adminmongo": 
-  "cmak": 
-  "mongoexpress": 
-  "phpmyadmin": 
-  "phppgadmin": 
+  check_version:
+    "rocketmqconsole": ""
+    "adminer":      "docker exec -it adminer sh -c 'cat /var/www/html/adminer.php |grep  @version'"
+    "adminmongo":   "docker exec -it adminmongo sh -c 'cat /app/user/package.json | grep version'" 
+    "mongoexpress": "echo no method get version"
+    "pgadmin":      ""
+    "codeserver":   "docker exec -it codeserver sh -c 'code-server --version'"
+    "phpmyadmin":   "docker exec -it phpmyadmin bash -c 'cat /var/www/html/package.json | grep version'"
+    "phppgadmin":   "docker exec -it phppgadmin sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'"
+    "portainer":    "echo no method get version"
+    "cmak":
+  extra:
+    "cmak": "docker exec -it  cmak bash -c 'sed -i 's/\/dev\/random/\/dev\/.\/urandom/g' /usr/local/openjdk-11/conf/security/java.security'"
