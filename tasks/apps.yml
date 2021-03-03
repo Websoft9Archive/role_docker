@@ -52,8 +52,8 @@
     
 - block:
   - set_fact:
-      docker_version_cmd: "{{docker_apps_commands.check_version.docker_appname}}"
-      docker_extra_cmd:   "{{docker_apps_commands.extra.docker_appname}}"
+      docker_version_cmd: "{{docker_apps_commands[docker_appname].check_version}}"
+      docker_extra_cmd:   "{{docker_apps_commands[docker_appname].extra}}"
   - debug: var=docker_version_cmd
   - debug: var=docker_extra_cmd
 
@@ -63,5 +63,6 @@
     failed_when: false
 
   - name: Execute container extra command
-    shell: eval "{{docker_extra_cmd}}" 
+    shell: eval '{{docker_extra_cmd}}''
     when: docker_extra_cmd is defined and docker_extra_cmd is not none
+
