@@ -1,6 +1,7 @@
 docker_apps_commands: 
   "adminer": 
   "adminmongo": 
+  "cmark": 
   "mongoexpress": 
   "phpmyadmin": 
   "phppgadmin": 
