@@ -5,19 +5,22 @@ docker_apps_commands:
   "adminer":
      check_version: "docker exec -it adminer sh -c 'cat /var/www/html/adminer.php |grep  @version'"   
      extra:
-  "adminmongo"
+  "adminmongo":
      check_version: "docker exec -it adminmongo sh -c 'cat /app/user/package.json | grep version'"   
      extra:
-  "adminmongo":
+  "codiad":
      check_version:    
      extra:
-  "pgadmin"
+  "mongoexpress":
      check_version:    
      extra:
-  "codeserver"
+  "pgadmin":
+     check_version:    
+     extra:
+  "codeserver":
      check_version: "docker exec -it codeserver sh -c 'code-server --version'"  
      extra:
-  "phpmyadmin"
+  "phpmyadmin":
      check_version: "docker exec -it phpmyadmin bash -c 'cat /var/www/html/package.json | grep version'"   
      extra:
   "phppgadmin":
