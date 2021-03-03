@@ -28,6 +28,6 @@ docker_apps_commands:
      extra:
   "cmak":
      check_version:    
-     extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security"
+     extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security'"
 
      
