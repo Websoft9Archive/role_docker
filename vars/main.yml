@@ -1,4 +1,7 @@
 docker_apps_commands:
+  "onlyofficedocumentserver":
+     check_version:    
+     extra:
   "rocketmqconsole":
      check_version:    
      extra:
