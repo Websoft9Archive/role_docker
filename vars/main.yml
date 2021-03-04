@@ -1,9 +1,9 @@
 docker_apps_commands:
-  "onlyofficedocumentserver":
-     check_version:    
+  "onlyofficedocumentserver": 
+     check_version: "docker exec -it onlyofficedocumentserver bash -c 'cat /etc/apt/sources.list.d/ds.list |cut -d/ -f9'"   
      extra:
-  "rocketmqconsole":
-     check_version:    
+  "rocketmqconsole": 
+     check_version: "docker images |grep rocketmq |cut -d' ' -f 4"  
      extra:
   "adminer":
      check_version: "docker exec -it adminer sh -c 'cat /var/www/html/adminer.php |grep  @version'"   
@@ -12,13 +12,13 @@ docker_apps_commands:
      check_version: "docker exec -it adminmongo sh -c 'cat /app/user/package.json | grep version'"   
      extra:
   "codiad":
-     check_version:    
+     check_version: "docker exec -it codiad sh -c 'cat version.txt'"   
      extra:
   "mongoexpress":
-     check_version:    
+     check_version: "docker inspect mongoexpress |grep MONGO_EXPRESS |cut -d= -f2"   
      extra:
   "pgadmin":
-     check_version:    
+     check_version: "docker exec -it pgadmin sh -c 'cat docs/release_notes.html  |grep -i version |tail -1 |cut -d= -f4'"  
      extra:
   "codeserver":
      check_version: "docker exec -it codeserver sh -c 'code-server --version'"  
@@ -30,10 +30,10 @@ docker_apps_commands:
      check_version: "docker exec -it phppgadmin sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'"   
      extra:
   "portainer":
-     check_version:    
+     check_version: "no method get version"   
      extra:
   "cmak":
-     check_version:    
+     check_version: "docker exec -it cmak bash -c 'ls kafka-manager/lib/cmak.cmak-*-assets.jar |cut -d- -f3'"   
      extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security'"
 
      
