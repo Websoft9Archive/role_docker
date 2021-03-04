@@ -63,6 +63,8 @@
     failed_when: false
 
   - name: Execute container extra command
-    shell: eval "{{docker_extra_cmd}}"
+    shell: |
+      sleep 30s
+      eval "{{docker_extra_cmd}}"
     when: docker_extra_cmd is defined and docker_extra_cmd is not none
 
