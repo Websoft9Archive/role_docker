@@ -1,0 +1,39 @@
+docker_apps_commands:
+  "onlyofficedocumentserver":
+     check_version:    
+     extra:
+  "rocketmqconsole":
+     check_version:    
+     extra:
+  "adminer":
+     check_version: "docker exec -it adminer sh -c 'cat /var/www/html/adminer.php |grep  @version'"   
+     extra:
+  "adminmongo":
+     check_version: "docker exec -it adminmongo sh -c 'cat /app/user/package.json | grep version'"   
+     extra:
+  "codiad":
+     check_version:    
+     extra:
+  "mongoexpress":
+     check_version:    
+     extra:
+  "pgadmin":
+     check_version:    
+     extra:
+  "codeserver":
+     check_version: "docker exec -it codeserver sh -c 'code-server --version'"  
+     extra:
+  "phpmyadmin":
+     check_version: "docker exec -it phpmyadmin bash -c 'cat /var/www/html/package.json | grep version'"   
+     extra:
+  "phppgadmin":
+     check_version: "docker exec -it phppgadmin sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'"   
+     extra:
+  "portainer":
+     check_version:    
+     extra:
+  "cmak":
+     check_version:    
+     extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security'"
+
+     

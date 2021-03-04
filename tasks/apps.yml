@@ -49,4 +49,20 @@
   with_items:
     - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
     - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
+    
+- block:
+  - set_fact:
+      docker_version_cmd: "{{docker_apps_commands[docker_appname].check_version}}"
+      docker_extra_cmd:   "{{docker_apps_commands[docker_appname].extra}}"
+  - debug: var=docker_version_cmd
+  - debug: var=docker_extra_cmd
+
+  - name: Chcek {{docker_appname}} version
+    shell: sudo echo "{{docker_appname}} version:" $(eval "{{docker_version_cmd}}")  |sudo tee -a /data/logs/install_version.txt
+    when: docker_version_cmd is defined and docker_version_cmd.stdout is not none
+    failed_when: false
+
+  - name: Execute container extra command
+    shell: eval "{{docker_extra_cmd}}"
+    when: docker_extra_cmd is defined and docker_extra_cmd is not none
 
