@@ -10,11 +10,14 @@ services:
     restart: always
     ports:
       - "{{docker_apps_cmak_port}}:9000"
-    command:
-      - "-Dcmak.zkhosts={{docker_gateway.stdout}}:2181"
-      - "-DbasicAuthentication.enabled=true"
-      - "-DbasicAuthentication.username=admin"
-      - "-DbasicAuthentication.password=123456"
+    environment:
+      ZK_HOSTS: "{{docker_gateway.stdout}}:2181"
+      APPLICATION_SECRET: "random-secret"
+      KAFKA_MANAGER_AUTH_ENABLED: "true"
+      KAFKA_MANAGER_USERNAME: admin
+      KAFKA_MANAGER_PASSWORD: 123456
+
+      
     
 networks:
   default:
