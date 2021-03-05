@@ -30,7 +30,7 @@ docker_apps_commands:
      check_version: "docker exec -it phppgadmin sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'"   
      extra:
   "portainer":
-     check_version: "no method get version"   
+     check_version: "curl https://github.com/portainer/portainer/releases |grep Release |grep tag |head -1 |cut -d/ -f6 |cut -c 1-5"   
      extra:
   "cmak":
      check_version: "docker exec -it cmak bash -c 'ls kafka-manager/lib/cmak.cmak-*-assets.jar |cut -d- -f3'"   
