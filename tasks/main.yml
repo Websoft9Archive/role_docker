@@ -1,29 +1,31 @@
-- name: Create Docker user
-  user:
-    name: docker 
-    shell: /user/sbin/nologin
-    
-# for different os family
-- name: Install for {{ansible_os_family}} os family
-  include: "{{ansible_os_family}}.yml"
+- block:
+  - name: Create Docker user
+    user:
+      name: docker 
+      shell: /user/sbin/nologin
+      
+  # for different os family
+  - name: Install for {{ansible_os_family}} os family
+    include: "{{ansible_os_family}}.yml"
 
-### ln -sf /usr/local/bin/docker-compose  /usr/bin is need, otherwise CentOS on Azure and AWS error
-- name: Install Docker Compose
-  shell: |
-    curl -L "https://github.com/docker/compose/releases/download/{{docker_compose_version}}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
-    ln -sf /usr/local/bin/docker-compose  /usr/bin
+  ### ln -sf /usr/local/bin/docker-compose  /usr/bin is need, otherwise CentOS on Azure and AWS error
+  - name: Install Docker Compose
+    shell: |
+      curl -L "https://github.com/docker/compose/releases/download/{{docker_compose_version}}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+      sudo chmod +x /usr/local/bin/docker-compose
+      ln -sf /usr/local/bin/docker-compose  /usr/bin
 
-- name: Started and enable Docker
-  service:
-    name: docker 
-    enabled: yes
-    state: restarted
+  - name: Started and enable Docker
+    service:
+      name: docker 
+      enabled: yes
+      state: restarted
 
-- name: Create an network for all application
-  shell: docker network create {{docker_addnetwork}}
-  failed_when: False
-  
+  - name: Create an network for all application
+    shell: docker network create {{docker_addnetwork}}
+    failed_when: False
+  when: docker_install
+
 - name: Get Docker Gateway
   shell: ip route show | grep docker0 | awk '{print $9}'
   register: docker_gateway
