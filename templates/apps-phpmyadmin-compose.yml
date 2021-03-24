@@ -12,8 +12,6 @@ services:
       restart: always
       ports:
        - {{docker_apps_phpmyadmin_port}}:80
-      volumes:
-       - "{{docker_apps_dir}}/{{docker_appname}}/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php"
 
 networks:
   default:
