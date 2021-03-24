@@ -1,3 +1,5 @@
+# PMA_HOSTS for multi instances
+
 version: "3.7"
 services:
   phpmyadmin:
@@ -5,8 +7,9 @@ services:
       container_name: "{{docker_appname}}"
       environment:
        - PMA_HOST={{docker_gateway.stdout}}
+       #- PMA_HOSTS=172.17.0.1,172.17.0.2
        - PMA_PORT=3306
-       - UPLOAD_LIMIT=20M
+       - UPLOAD_LIMIT=200M
       restart: always
       ports:
        - {{docker_apps_phpmyadmin_port}}:80
