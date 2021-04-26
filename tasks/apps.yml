@@ -67,4 +67,5 @@
       sleep 30s
       eval "{{docker_extra_cmd}}"
     when: docker_extra_cmd is defined and docker_extra_cmd is not none
+    failed_when: false
 
