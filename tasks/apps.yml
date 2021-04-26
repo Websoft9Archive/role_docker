@@ -32,6 +32,12 @@
   template:
     src: apps-{{docker_appname}}-compose.yml
     dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
+
+- name: copy Dockerfile
+  template:
+    src: Dockerfile
+    dest: "{{docker_apps_dir}}/{{docker_appname}}/Dockerfile"
+  when: docker_appname == "cmak"
  
 - name: Run docker-compose and add exra user permission
   shell: |
