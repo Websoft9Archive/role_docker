@@ -38,8 +38,9 @@
   loop: "{{docker_applications}}"
   loop_control:
     loop_var: docker_applications_item
-  when: docker_applications is defined and docker_applications is not none and docker_applications != ""
-  
+  when: (docker_applications is defined and docker_applications is not none and docker_applications != "") or
+        (docker_applications_list is defined and ddocker_applications_list is not none and docker_applications_list != "")
+
 - name: copy script files to remote
   copy: src=check_dockerapp_service.sh dest=/tmp/check_dockerapp_service.sh
 

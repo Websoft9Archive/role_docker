@@ -18,6 +18,10 @@ docker_region: 0
 # This is must define a list variable
 docker_applications: []
 
+# 
+docker_applications_list: []
+docker_compose_filename: "docker-compose-production.yml"
+
 docker_addnetwork: "apps"
 
 # db tools 909*

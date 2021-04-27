@@ -5,7 +5,6 @@
 # 4 create symbolic link
 # You just need to add a docker compose file to the templates folder of this role when you want to develop more application.
 
-
 - debug:
     msg: "{{docker_appname}} will be installed"
 
@@ -27,35 +26,46 @@
     
 - debug:
     var: docker_uid
-    
-- name: copy docker-compose.yml
-  template:
-    src: apps-{{docker_appname}}-compose.yml
-    dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
 
-- name: copy Dockerfile
-  template:
-    src: Dockerfile
-    dest: "{{docker_apps_dir}}/{{docker_appname}}/Dockerfile"
-  when: docker_appname == "cmak"
- 
-- name: Run docker-compose and add exra user permission
-  shell: |
-    docker-compose up -d
-    sleep 30s
-    setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}
-  args:
-    chdir: "{{docker_apps_dir}}/{{docker_appname}}"
-    
-- name: Create a symbolic link
-  file:
-    src: '{{item.src}}'
-    dest: '{{item.dest}}'
-    state: link
-  with_items:
-    - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
-    - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
-    
+- block:
+  - set_fact:
+      docker_compose_filename: "docker-compose.yml"
+
+  - name: copy docker-compose.yml
+    template:
+      src: apps-{{docker_appname}}-compose.yml
+      dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
+
+  when: docker_applications is defined and docker_applications is not none and docker_applications != ""
+
+- block:
+  - set_fact:
+      docker_compose_filename: "docker-compose-production.yml"
+
+  - name: Clone {{docker_appname}} in Websoft9 
+    git:
+      repo: "https://github.com/Websoft9/docker-{{docker_appname}}.git"
+      dest: "{{docker_apps_dir}}/{{docker_appname}}"
+
+  when: docker_applications_list is defined and docker_applications_list is not none and docker_applications_list != ""
+
+  - name: Run docker-compose and add exra user permission
+    shell: |
+      docker-compose -f {{docker_compose_filename}} up -d
+      sleep 30s
+      setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}
+    args:
+      chdir: "{{docker_apps_dir}}/{{docker_appname}}"
+   
+  - name: Create a symbolic link
+    file:
+      src: '{{item.src}}'
+      dest: '{{item.dest}}'
+      state: link
+    with_items:
+      - {src: "{{docker_apps_dir}}/{{docker_appname}}/{{docker_compose_filename}}",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
+      - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
+
 - block:
   - set_fact:
       docker_version_cmd: "{{docker_apps_commands[docker_appname].check_version}}"
