@@ -1,6 +1,6 @@
 docker_apps_commands:
   "onlyofficedocs":
-     check_version: "docker exec -it onlyofficedocumentserver bash -c 'cat /etc/apt/sources.list.d/ds.list |cut -d/ -f9'"  
+     check_version: "docker images  |grep documentserver |awk '{print $2}'" 
      extra: 
   "onlyofficedocumentserver": 
      check_version: "docker exec -it onlyofficedocumentserver bash -c 'cat /etc/apt/sources.list.d/ds.list |cut -d/ -f9'"   

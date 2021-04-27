@@ -46,6 +46,7 @@
     git:
       repo: "https://github.com/Websoft9/docker-{{docker_appname}}.git"
       dest: "{{docker_apps_dir}}/{{docker_appname}}"
+      force: "yes"
       
   when: docker_appname in docker_applications_list
 
