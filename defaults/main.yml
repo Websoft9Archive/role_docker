@@ -17,9 +17,6 @@ docker_region: 0
 
 # This is must define a list variable
 docker_applications: []
-
-# Install using the Docker project
-docker_applications_list: []
 docker_compose_filename: "docker-compose-production.yml"
 
 #docker_applications_list:
