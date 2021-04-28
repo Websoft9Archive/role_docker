@@ -28,8 +28,9 @@
     var: docker_uid
 
 - name: Check that the compose file exists
-  stat:
-    path: templates/apps-apps-{{docker_appname}}-compose.yml
+  local_action:
+    stat: 
+      path: ./role_docker/templates/apps-apps-{{docker_appname}}-compose.yml
   register: file_status
 
 - block:
