@@ -19,9 +19,6 @@ docker_region: 0
 docker_applications: []
 docker_compose_filename: "docker-compose-production.yml"
 
-#docker_applications_list:
-#  - onlyofficedocs
-
 docker_addnetwork: "apps"
 
 # db tools 909*
