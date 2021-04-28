@@ -28,9 +28,9 @@
     var: docker_uid
 
 - name: Check that the compose file exists
-  stat:
+  stat: 
     path: ./roles/role_docker/templates/apps-{{docker_appname}}-compose.yml
-  delegate_to: localhost
+  delegate_to: localhost 
   register: file_status
 
 - block:
