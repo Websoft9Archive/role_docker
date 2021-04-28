@@ -27,42 +27,50 @@
 - debug:
     var: docker_uid
 
-- name: Check that the compose file exists
+- name: Check that the local compose file exists
   stat: 
     path: ./roles/role_docker/templates/apps-{{docker_appname}}-compose.yml
   delegate_to: localhost 
-  register: file_status
+  register: docker_compose_file_status
 
-- block:
-  - set_fact:
-      docker_compose_filename: "docker-compose.yml"
-
+- block:  
   - name: copy docker-compose.yml
     template:
       src: apps-{{docker_appname}}-compose.yml
       dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
-
-  when: file_status.stat.exists
+  when: docker_compose_file_status.stat.exists
 
 - block:
+  - name: Get install path
+    shell: curl -s https://raw.githubusercontent.com/Websoft9/docker-$repo_name/main/variables.json |jq -r .installpath
+    register: docker_apps_install_path
+
   - set_fact:
-      docker_compose_filename: "docker-compose-production.yml"
+      docker_apps_dir: "{{docker_apps_install_path.stdout}}"
 
   - name: Clone {{docker_appname}} in Websoft9 
     git:
       repo: "https://github.com/Websoft9/docker-{{docker_appname}}.git"
-      dest: "{{docker_apps_dir}}/{{docker_appname}}"
+      dest: "{{docker_apps_install_path.stdout}}"
       force: "yes"
-      
-  when: not file_status.stat.exists
+  
+  - name: Update compose filenames
+    shell: |
+      rm -rf docker-compose.yml
+      mv -f docker-compose-production.yml docker-compose.yml
+    args: 
+      chdir: {{docker_apps_dir}}
+    failed_when: false
+
+  when: not docker_compose_file_status.stat.exists
 
 - name: Run docker-compose and add exra user permission
   shell: |
-    docker-compose -f "{{docker_compose_filename}}" up -d
+    docker-compose up -d
     sleep 30s
     setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}
   args:
-    chdir: "{{docker_apps_dir}}/{{docker_appname}}"
+    chdir: "{{docker_apps_install_path.stdout}}"
   
 - name: Create a symbolic link
   file:
@@ -70,7 +78,7 @@
     dest: '{{item.dest}}'
     state: link
   with_items:
-    - {src: "{{docker_apps_dir}}/{{docker_appname}}/{{docker_compose_filename}}",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
+    - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
     - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
 
 - block:
