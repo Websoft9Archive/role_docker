@@ -28,9 +28,9 @@
     var: docker_uid
 
 - name: Check that the compose file exists
-  local_action:
-    stat: 
-      path: ./role_docker/templates/apps-apps-{{docker_appname}}-compose.yml
+  stat:
+    path: ./roles/role_docker/templates/apps-{{docker_appname}}-compose.yml
+  delegate_to: localhost
   register: file_status
 
 - block:
@@ -42,7 +42,7 @@
       src: apps-{{docker_appname}}-compose.yml
       dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
 
-  when: file_status.exists
+  when: file_status.stat.exists
 
 - block:
   - set_fact:
@@ -54,7 +54,7 @@
       dest: "{{docker_apps_dir}}/{{docker_appname}}"
       force: "yes"
       
-  when: not file_status.exists
+  when: not file_status.stat.exists
 
 - name: Run docker-compose and add exra user permission
   shell: |
