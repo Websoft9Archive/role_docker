@@ -60,7 +60,7 @@
 
 - block:
   - name: Get install path
-    shell: curl -s https://raw.githubusercontent.com/Websoft9/docker-$repo_name/main/variables.json |jq -r .installpath
+    shell: curl -s https://raw.githubusercontent.com/Websoft9/docker-{{docker_appname}}/main/variables.json |jq -r .installpath
     register: docker_apps_install_path
     
   - name: Clone {{docker_appname}} in Websoft9 
