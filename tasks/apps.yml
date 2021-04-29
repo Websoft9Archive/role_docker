@@ -38,16 +38,31 @@
     template:
       src: apps-{{docker_appname}}-compose.yml
       dest: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml"
+
+  - name: Run docker-compose and add exra user permission
+    shell: |
+      docker-compose up -d
+      sleep 30s
+      setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}
+    args:
+      chdir: "{{docker_apps_dir}}/{{docker_appname}}"
+
+  - name: Create a symbolic link
+    file:
+      src: '{{item.src}}'
+      dest: '{{item.dest}}'
+      state: link
+    with_items:
+      - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
+      - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
+
   when: docker_compose_file_status.stat.exists
 
 - block:
   - name: Get install path
     shell: curl -s https://raw.githubusercontent.com/Websoft9/docker-$repo_name/main/variables.json |jq -r .installpath
     register: docker_apps_install_path
-
-  - set_fact:
-      docker_apps_dir: "{{docker_apps_install_path.stdout}}"
-
+    
   - name: Clone {{docker_appname}} in Websoft9 
     git:
       repo: "https://github.com/Websoft9/docker-{{docker_appname}}.git"
@@ -59,28 +74,28 @@
       rm -rf docker-compose.yml
       mv -f docker-compose-production.yml docker-compose.yml
     args: 
-      chdir: {{docker_apps_dir}}
+      chdir: "{{docker_apps_install_path.stdout}}"
     failed_when: false
 
+  - name: Run docker-compose and add exra user permission
+    shell: |
+      docker-compose up -d
+      sleep 30s
+      setfacl -m u:docker:rwx -R {{docker_apps_install_path.stdout}}
+    args:
+      chdir: "{{docker_apps_install_path.stdout}}"
+
+  - name: Create a symbolic link
+    file:
+      src: '{{item.src}}'
+      dest: '{{item.dest}}'
+      state: link
+    with_items:
+      - {src: "{{docker_apps_install_path.stdout}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
+      - {src: "{{docker_apps_install_path.stdout}}",dest: "/data/wwwroot/{{docker_appname}}"}
+      
   when: not docker_compose_file_status.stat.exists
-
-- name: Run docker-compose and add exra user permission
-  shell: |
-    docker-compose up -d
-    sleep 30s
-    setfacl -m u:docker:rwx -R {{docker_apps_dir}}/{{docker_appname}}
-  args:
-    chdir: "{{docker_apps_install_path.stdout}}"
   
-- name: Create a symbolic link
-  file:
-    src: '{{item.src}}'
-    dest: '{{item.dest}}'
-    state: link
-  with_items:
-    - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
-    - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
-
 - block:
   - set_fact:
       docker_version_cmd: "{{docker_apps_commands[docker_appname].check_version}}"
