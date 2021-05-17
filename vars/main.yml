@@ -1,6 +1,6 @@
 docker_apps_commands:
   "onlyofficedocs":
-     check_version: "docker images  |grep documentserver |awk '{print $2}'" 
+     check_version: "docker exec -it onlyofficedocs bash -c 'apt-cache show onlyoffice-documentserver |grep -i version |cut -d: -f2'" 
      extra: 
   "onlyofficedocumentserver": 
      check_version: "docker exec -it onlyofficedocumentserver bash -c 'cat /etc/apt/sources.list.d/ds.list |cut -d/ -f9'"   
@@ -36,7 +36,7 @@ docker_apps_commands:
      check_version: "curl https://github.com/portainer/portainer/releases |grep Release |grep tag |head -1 |cut -d/ -f6 |cut -c 1-5"   
      extra:
   "cmak":
-     check_version: "docker exec -it cmak bash -c 'ls kafka-manager/lib/cmak.cmak-*-assets.jar |cut -d- -f3'"   
+     check_version: "docker exec -it cmak bash -c 'ls /cmak/lib/cmak.cmak-*-assets.jar'"   
      extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security'"
 
      
