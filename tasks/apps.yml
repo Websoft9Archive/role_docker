@@ -72,6 +72,7 @@
   - name: Update compose filenames
     shell: |
       rm -rf docker-compose.yml
+      mv -f .env_all .env
       mv -f docker-compose-production.yml docker-compose.yml
     args: 
       chdir: "{{docker_apps_install_path.stdout}}"
