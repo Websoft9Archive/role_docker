@@ -1,39 +1,41 @@
+# FAQ: can't use docker -exec -it, Assigning a tty causes a process error.
+
 docker_apps_commands:
   "onlyofficedocs":
-     check_version: "docker exec -it onlyofficedocs bash -c 'apt-cache show onlyoffice-documentserver |grep -i version |cut -d: -f2'" 
+     check_version: "docker exec -i onlyofficedocs bash -c 'apt-cache show onlyoffice-documentserver |grep -i version |cut -d: -f2'" 
      extra: 
   "rocketmqconsole": 
      check_version: "docker images |grep rocketmq |cut -d' ' -f 4"  
      extra:
   "adminer":
-     check_version: "docker exec -it adminer sh -c 'cat /var/www/html/adminer.php |grep  @version'"   
+     check_version: "docker exec -i adminer sh -c 'cat /var/www/html/adminer.php |grep  @version'"   
      extra:
   "adminmongo":
-     check_version: "docker exec -it adminmongo sh -c 'cat /app/user/package.json | grep version'"   
+     check_version: "docker exec -i adminmongo sh -c 'cat /app/user/package.json | grep version'"   
      extra:
   "codiad":
-     check_version: "docker exec -it codiad sh -c 'cat version.txt'"   
+     check_version: "docker exec -i codiad sh -c 'cat version.txt'"   
      extra:
   "mongoexpress":
      check_version: "docker inspect mongoexpress |grep MONGO_EXPRESS |cut -d= -f2"   
      extra:
   "pgadmin":
-     check_version: "docker exec -it pgadmin sh -c 'cat docs/release_notes.html  |grep -i version |tail -1 |cut -d= -f4'"  
+     check_version: "docker exec -i pgadmin sh -c 'cat docs/release_notes.html  |grep -i version |tail -1 |cut -d= -f4'"  
      extra:
   "codeserver":
-     check_version: "docker exec -it codeserver sh -c 'code-server --version'"  
+     check_version: "docker exec -i codeserver sh -c 'code-server --version'"  
      extra:
   "phpmyadmin":
-     check_version: "docker exec -it phpmyadmin bash -c 'cat /var/www/html/package.json | grep version'"   
+     check_version: "docker exec -i phpmyadmin bash -c 'cat /var/www/html/package.json | grep version'"   
      extra:
   "phppgadmin":
-     check_version: "docker exec -it phppgadmin sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'"   
+     check_version: "docker exec -i phppgadmin sh -c 'cat /var/www/HISTORY | grep -i version | head -n 1'"   
      extra:
   "portainer":
      check_version: "curl https://github.com/portainer/portainer/releases |grep Release |grep tag |head -1 |cut -d/ -f6 |cut -c 1-5"   
      extra:
   "cmak":
-     check_version: "docker exec -it cmak bash -c 'ls /cmak/lib/cmak.cmak-*-assets.jar'"   
+     check_version: "docker exec -i cmak bash -c 'ls /cmak/lib/cmak.cmak-*-assets.jar'"   
      extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security'"
 
      
