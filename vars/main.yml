@@ -37,5 +37,8 @@ docker_apps_commands:
   "cmak":
      check_version: "docker exec -i cmak bash -c 'ls /cmak/lib/cmak.cmak-*-assets.jar'"   
      extra: "docker exec -it  cmak bash -c 'sed -i 's#/dev/random#/dev/./urandom#g' /usr/local/openjdk-11/conf/security/java.security'"
+  "cloudbeaver":
+     check_version: "docker exec -i cloudbeaver bash -c 'cat /opt/cloudbeaver/server/.eclipseproduct |grep version |cut -d= -f2'"   
+     extra: 
 
      
