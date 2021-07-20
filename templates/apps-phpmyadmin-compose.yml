@@ -3,7 +3,7 @@
 version: "3.7"
 services:
   phpmyadmin:
-      image: phpmyadmin/phpmyadmin
+      image: phpmyadmin
       container_name: "{{docker_appname}}"
       environment:
        - PMA_HOST={{docker_gateway.stdout}}
