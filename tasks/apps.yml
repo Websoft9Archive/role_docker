@@ -68,15 +68,6 @@
       repo: "https://github.com/Websoft9/docker-{{docker_appname}}.git"
       dest: "{{docker_apps_install_path.stdout}}"
       force: "yes"
-  
-  - name: Update compose filenames
-    shell: |
-      rm -rf docker-compose.yml
-      mv -f .env_all .env
-      mv -f docker-compose-production.yml docker-compose.yml
-    args: 
-      chdir: "{{docker_apps_install_path.stdout}}"
-    failed_when: false
 
   - name: Run docker-compose and add exra user permission
     shell: |
