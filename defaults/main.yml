@@ -41,7 +41,7 @@ docker_apps_cmak_port: 9005
 
 docker_apps_dir: "/data/apps"
 # refer to: https://github.com/docker/compose/releases/
-docker_compose_version: "1.29.0"
+docker_compose_version: "v2.1.1"
 docker_repository_url: "https://download.docker.com/linux/centos/docker-ce.repo"
 
 docker_install: True
