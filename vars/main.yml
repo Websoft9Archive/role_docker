@@ -23,7 +23,7 @@ docker_apps_commands:
      check_version: "docker exec -i pgadmin sh -c 'cat docs/release_notes.html  |grep -i version |tail -1 |cut -d= -f4'"  
      extra:
   "codeserver":
-     check_version: "docker inspect codeserver | grep org.opencontainers.image.version | awk -F : '{print $2}'"  
+     check_version: "docker inspect codeserver | grep org.opencontainers.image.version | cut -d: -f2"  
      extra:
   "phpmyadmin":
      check_version: "docker exec -i phpmyadmin bash -c 'cat /var/www/html/package.json | grep version'"   
