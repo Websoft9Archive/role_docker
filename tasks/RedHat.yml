@@ -14,6 +14,6 @@
 
 - name: Install Docker on {{ansible_distribution}}
   yum:
-    name: [docker-ce,docker-ce-cli,containerd.io]
+    name: [docker-ce,docker-ce-cli,containerd.io,docker-compose-plugin]
     update_cache: yes
     state: latest
