@@ -21,9 +21,6 @@ Docker 支持大部分操作系统上安装，参考官方[安装文档](https:/
 
 ## 没有docker compose命令怎么办
 
-安装docker-compose-plugin后就有docker compose命令，没有安装此插件如果需要使用docker compose还可以执行脚本
-```
-alias docker-compose='docker compose'
-```
+安装docker-compose-plugin后就有docker compose命令
 
 
