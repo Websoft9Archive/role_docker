@@ -54,7 +54,6 @@
       state: link
     with_items:
       - {src: "{{docker_apps_dir}}/{{docker_appname}}/docker-compose.yml",dest: "/data/config/apps-{{docker_appname}}-compose.yml"}
-      - {src: "{{docker_apps_dir}}/{{docker_appname}}",dest: "/data/wwwroot/{{docker_appname}}"}
 
   when: docker_compose_file_status.stat.exists
 
